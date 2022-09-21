@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-blog-42689": {
+      "hosting": {
+        "ng-fullstack-blog": [
+          "ng-blog-42689"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-blog-42689"
+  }
+}
