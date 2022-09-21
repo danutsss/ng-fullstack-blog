@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Authentication components.
+// Authentication components & guards.
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 const routes: Routes = [
 	{
@@ -17,6 +18,7 @@ const routes: Routes = [
 	{
 		path: 'dashboard',
 		component: DashboardComponent, // Dashboard route.
+		canActivate: [AuthGuard],
 	},
 	{
 		path: 'forgot-password',
