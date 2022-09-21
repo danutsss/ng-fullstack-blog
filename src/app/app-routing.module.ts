@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Authentication components.
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
-import { VerifyEmailAddressComponent } from './verify-email-address/verify-email-address.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 
 const routes: Routes = [
 	{
