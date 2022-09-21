@@ -20,6 +20,7 @@ import { AuthService } from './shared/services/auth.service';
 
 // Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 	declarations: [
@@ -37,6 +38,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
 		BrowserAnimationsModule,
+		NgbModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
