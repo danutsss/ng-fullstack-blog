@@ -10,13 +10,13 @@ import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-// Authentication components.
+// Authentication components & services.
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
-
+import { AuthService } from './shared/services/auth.service';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -33,7 +33,7 @@ import { VerifyEmailAddressComponent } from './components/verify-email-address/v
 		AngularFirestoreModule,
 		BrowserAnimationsModule,
 	],
-	providers: [],
+	providers: [AuthService],
 	bootstrap: [AppComponent],
 })
 export class AppModule {}
