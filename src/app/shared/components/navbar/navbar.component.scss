@@ -1,0 +1,40 @@
+.mainNav {
+	border-bottom: 1px solid #f8f9fa;
+	background-color: white;
+
+	@media only screen and (min-width: 992px) {
+		border-bottom: 1px solid transparent;
+		background: transparent;
+
+		-webkit-transition: background-color 0.2s;
+		-moz-transition: background-color 0.2s;
+		transition: background-color 0.2s;
+
+		/* Force Hardware Acceleration in WebKit */
+		-webkit-transform: translate3d(0, 0, 0);
+		-moz-transform: translate3d(0, 0, 0);
+		-ms-transform: translate3d(0, 0, 0);
+		-o-transform: translate3d(0, 0, 0);
+		transform: translate3d(0, 0, 0);
+		-webkit-backface-visibility: hidden;
+	}
+}
+
+.masthead {
+	margin-bottom: 50px;
+	background: no-repeat 50%;
+	background-color: #868e96;
+	background-attachment: scroll;
+	position: relative;
+	background-size: cover;
+}
+
+header.masthead .overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: #212529;
+	opacity: 0.5;
+}
