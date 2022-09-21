@@ -121,6 +121,18 @@ export class AuthService {
 	}
 
 	/**
+	 * Authentication logic for authentication providers.
+	 */
+	authLogin(provider: any) {
+		return this.afAuth.signInWithPopup(provider).then((result) => {
+			this.ngZone.run(() => {
+				this.router.navigate(['dashboard']);
+			});
+			this.setUserData(result.user);
+		});
+	}
+
+	/**
 	 * Sign out option.
 	 */
 	async signOut() {
@@ -151,7 +163,7 @@ export class AuthService {
 			`users/${user.uid}`
 		);
 
-		const userData: any = {
+		const userData: User = {
 			uid: user.uid,
 			email: user.email,
 			displayName: user.displayName,
