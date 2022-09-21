@@ -17,6 +17,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 import { AuthService } from './shared/services/auth.service';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -25,6 +26,7 @@ import { AuthService } from './shared/services/auth.service';
 		SignInComponent,
 		SignUpComponent,
 		VerifyEmailAddressComponent,
+  NavbarComponent,
 	],
 	imports: [
 		BrowserModule,
