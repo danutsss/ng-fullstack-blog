@@ -17,7 +17,10 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 import { AuthService } from './shared/services/auth.service';
+
+// Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -26,7 +29,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 		SignInComponent,
 		SignUpComponent,
 		VerifyEmailAddressComponent,
-  NavbarComponent,
+		NavbarComponent,
 	],
 	imports: [
 		BrowserModule,
