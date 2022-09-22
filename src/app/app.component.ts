@@ -20,18 +20,6 @@ export class AppComponent {
 		private router: Router
 	) {}
 
-	isSignInRoute() {
-		return this.router.url === '/sign-in';
-	}
-
-	isSignUpRoute() {
-		return this.router.url === '/sign-up';
-	}
-
-	isForgotPasswordRoute() {
-		return this.router.url === '/forgot-password';
-	}
-
 	isDashboardRoute() {
 		return this.router.url === '/dashboard';
 	}
