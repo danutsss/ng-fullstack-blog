@@ -61,13 +61,13 @@
 		}
 
 		.nav-link {
-			color: grey;
+			color: white;
 			&.active {
-				color: white;
+				color: grey;
 			}
 
 			&:hover {
-				color: white;
+				color: grey;
 			}
 		}
 	}

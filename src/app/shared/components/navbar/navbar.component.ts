@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Import Authentification service.
 import { AuthService } from '../../../shared/services/auth/auth.service';
@@ -11,7 +12,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 export class NavbarComponent implements OnInit {
 	public isCollapsed: boolean = true;
 
-	constructor(public authService: AuthService) {}
+	constructor(public authService: AuthService, public route: Router) {}
 
 	ngOnInit(): void {}
 
