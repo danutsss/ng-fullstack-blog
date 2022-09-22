@@ -21,6 +21,7 @@ import { AuthService } from './shared/services/auth.service';
 
 // Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
 	declarations: [
@@ -31,6 +32,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 		SignUpComponent,
 		VerifyEmailAddressComponent,
 		NavbarComponent,
+  HomeComponent,
 	],
 	imports: [
 		BrowserModule,
