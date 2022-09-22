@@ -1,0 +1,41 @@
+<!-- Responsive navigation bar start -->
+<nav class="mainNav navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/">Blogu' lui Qirila</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
+            aria-controls="navbarToggleExternalContent" (click)="isCollapsed = !isCollapsed" aria-expanded="false"
+            [attr.aria-expanded]="!isCollapsed" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end text-center" id="navbarNav"
+            [ngbCollapse]="isCollapsed">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">Despre</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Responsive navigation bar end -->
+
+<!-- Page header with logo and tagline start -->
+<header class="masthead" style='background-image: url("assets/images/header.jpg");'>
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading text-center my-5">
+                    <h1 class="fw-bolder">Blogu' lui Qirila</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Page header with logo and tagline end -->

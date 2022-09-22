@@ -1,3 +1,4 @@
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -17,6 +18,11 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 import { AuthService } from './shared/services/auth.service';
+
+// Layout components.
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -25,6 +31,8 @@ import { AuthService } from './shared/services/auth.service';
 		SignInComponent,
 		SignUpComponent,
 		VerifyEmailAddressComponent,
+		NavbarComponent,
+  HomeComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -32,6 +40,7 @@ import { AuthService } from './shared/services/auth.service';
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
 		BrowserAnimationsModule,
+		NgbModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],

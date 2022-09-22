@@ -9,11 +9,13 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 
+// Layout components.
+import { HomeComponent } from './components/home/home.component';
+
 const routes: Routes = [
 	{
 		path: '',
-		redirectTo: '/sign-in',
-		pathMatch: 'full', // Default route.
+		component: HomeComponent,
 	},
 	{
 		path: 'dashboard',

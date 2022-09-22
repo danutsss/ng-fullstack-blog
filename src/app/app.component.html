@@ -1,12 +1,5 @@
-<router-outlet></router-outlet>
+<app-navbar *ngIf="!isSignInRoute() && !isSignUpRoute() && !isForgotPasswordRoute() && !isDashboardRoute()">
+</app-navbar>
 
-<nav>
-  <ul>
-    <li>
-      <a routerLink="/sign-in">Sign in</a>
-    </li>
-    <li>
-      <a routerLink="/sign-up">Sign up</a>
-    </li>
-  </ul>
-</nav>
+
+<router-outlet></router-outlet>
