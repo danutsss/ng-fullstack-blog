@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
+// Import Authentification service.
+import { AuthService } from '../../../shared/services/auth/auth.service';
+
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
 	styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-	isCollapsed: boolean = true;
+	public isCollapsed: boolean = true;
 
-	constructor() {}
+	constructor(public authService: AuthService) {}
 
 	ngOnInit(): void {}
 }
