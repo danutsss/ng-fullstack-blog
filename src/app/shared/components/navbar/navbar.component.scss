@@ -1,7 +1,25 @@
 .mainNav {
 	border-bottom: 1px solid #f8f9fa;
 	background-color: white;
-	color: white !important;
+
+	.navbar-brand {
+		padding: 10px 20px;
+		font-weight: 800;
+	}
+
+	.navbar-nav {
+		li {
+			&.nav-item {
+				a {
+					padding: 10px 20px;
+					letter-spacing: 1px;
+					font-weight: 800;
+					text-transform: uppercase;
+					font-size: 12px;
+				}
+			}
+		}
+	}
 
 	@media only screen and (min-width: 992px) {
 		border-bottom: 1px solid transparent;
@@ -18,6 +36,21 @@
 		-o-transform: translate3d(0, 0, 0);
 		transform: translate3d(0, 0, 0);
 		-webkit-backface-visibility: hidden;
+
+		.navbar-brand {
+			color: white;
+		}
+
+		.nav-link {
+			color: grey;
+			&.active {
+				color: white;
+			}
+
+			&:hover {
+				color: white;
+			}
+		}
 	}
 }
 
