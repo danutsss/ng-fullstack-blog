@@ -123,13 +123,12 @@ export class AuthService {
 	/**
 	 * Authentication logic for authentication providers.
 	 */
-	authLogin(provider: any) {
-		return this.afAuth.signInWithPopup(provider).then((result) => {
-			this.ngZone.run(() => {
-				this.router.navigate(['dashboard']);
-			});
-			this.setUserData(result.user);
+	async authLogin(provider: any) {
+		const result = await this.afAuth.signInWithPopup(provider);
+		this.ngZone.run(() => {
+			this.router.navigate(['dashboard']);
 		});
+		this.setUserData(result.user);
 	}
 
 	/**
