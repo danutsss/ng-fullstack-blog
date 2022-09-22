@@ -16,12 +16,12 @@ import { AuthService } from './shared/services/auth/auth.service';
 
 // Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Import Angular Material components.
 import { MatButtonModule } from '@angular/material/button';
-import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
 	declarations: [
@@ -29,7 +29,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
 		DashboardComponent,
 		NavbarComponent,
 		HomeComponent,
-  HeaderComponent,
+		HeaderComponent,
 	],
 	imports: [
 		BrowserModule,
