@@ -1,0 +1,42 @@
+header.masthead {
+	margin-bottom: 50px;
+	background: no-repeat center center;
+	background-color: #868e96;
+	background-attachment: scroll;
+	position: relative;
+
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	z-index: -2;
+
+	.overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: -1;
+		height: 100%;
+		width: 100%;
+		background-color: #212529;
+		opacity: 0.5;
+	}
+
+	.site-heading {
+		padding: 200px 0 150px;
+		color: white;
+
+		h1 {
+			font-size: 50px;
+		}
+
+		@media only screen and (min-width: 768px) {
+			padding: 200px 0;
+
+			h1 {
+				font-size: 80px;
+				margin-bottom: 30px;
+			}
+		}
+	}
+}
