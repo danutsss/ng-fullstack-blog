@@ -12,7 +12,7 @@ import {
 import { Router } from '@angular/router';
 
 // User service.
-import { User } from './user';
+import { User } from '../models/user';
 
 @Injectable({
 	providedIn: 'root',
