@@ -19,6 +19,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 
 // Import Angular Material components.
 import { MatButtonModule } from '@angular/material/button';
@@ -32,6 +35,9 @@ import { MatChipsModule } from '@angular/material/chips';
 		NavbarComponent,
 		HomeComponent,
 		HeaderComponent,
+		AboutComponent,
+		ContactComponent,
+		FooterComponent,
 	],
 	imports: [
 		BrowserModule,
