@@ -22,6 +22,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 // Import Angular Material components.
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
 	declarations: [
@@ -39,6 +41,8 @@ import { MatButtonModule } from '@angular/material/button';
 		BrowserAnimationsModule,
 		NgbModule,
 		MatButtonModule,
+		MatCardModule,
+		MatChipsModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
