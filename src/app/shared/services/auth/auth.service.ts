@@ -56,8 +56,6 @@ export class AuthService {
 			const result = await this.afAuth.signInWithPopup(
 				new firebaseAuth.GoogleAuthProvider()
 			);
-
-			this.router.navigate(['dashboard']);
 			this.setUserData(result.user);
 		} catch (error: any) {
 			alert(error.message);
@@ -69,8 +67,6 @@ export class AuthService {
 	 */
 	async authLogin(provider: any) {
 		const result = await this.afAuth.signInWithPopup(provider);
-
-		this.router.navigate(['dashboard']);
 		this.setUserData(result.user);
 	}
 
