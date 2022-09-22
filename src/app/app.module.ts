@@ -12,27 +12,26 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // Authentication components & services.
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { VerifyEmailAddressComponent } from './components/verify-email-address/verify-email-address.component';
-import { AuthService } from './shared/services/auth.service';
+import { AuthService } from './shared/services/auth/auth.service';
 
 // Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+// Import Angular Material components.
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		DashboardComponent,
-		ForgotPasswordComponent,
-		SignInComponent,
-		SignUpComponent,
-		VerifyEmailAddressComponent,
 		NavbarComponent,
-  HomeComponent,
+		HomeComponent,
+		HeaderComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -41,6 +40,9 @@ import { HomeComponent } from './components/home/home.component';
 		AngularFirestoreModule,
 		BrowserAnimationsModule,
 		NgbModule,
+		MatButtonModule,
+		MatCardModule,
+		MatChipsModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],

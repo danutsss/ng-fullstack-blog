@@ -5,7 +5,7 @@ import {
 	RouterStateSnapshot,
 	Router,
 } from '@angular/router';
-import { AuthService } from '../../shared/services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { Observable } from 'rxjs';
 @Injectable({
 	providedIn: 'root',
@@ -17,7 +17,8 @@ export class AuthGuard implements CanActivate {
 		state: RouterStateSnapshot
 	): Observable<boolean> | Promise<boolean> | boolean {
 		if (this.authService.isLoggedIn !== true) {
-			this.router.navigate(['sign-in']);
+			this.router.navigate(['/']);
+			alert('You are not allowed to view this page.');
 		}
 		return true;
 	}

@@ -1,5 +1,5 @@
 <!-- Responsive navigation bar start -->
-<nav class="mainNav navbar navbar-expand-lg navbar-light fixed-top">
+<nav class="mainNav navbar navbar-expand-lg fixed-top" (scroll)="onPageScroll()">
     <div class="container">
         <a class="navbar-brand" routerLink="/">Blogu' lui Qirila</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent"
@@ -19,23 +19,18 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/contact">Contact</a>
                 </li>
+
+                <li class="nav-item">
+                    <button *ngIf="!authService.isLoggedIn" mat-raised-button color="primary"
+                        (click)="authService.googleAuth()">
+                        <img class="google-icon"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" />
+                        Sign in with Google</button>
+
+                    <a *ngIf="authService.isLoggedIn" class="nav-link" routerLink="/dashboard">Dashboard</a>
+                </li>
             </ul>
         </div>
     </div>
 </nav>
 <!-- Responsive navigation bar end -->
-
-<!-- Page header with logo and tagline start -->
-<header class="masthead" style='background-image: url("assets/images/header.jpg");'>
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-10 mx-auto">
-                <div class="site-heading text-center my-5">
-                    <h1 class="fw-bolder">Blogu' lui Qirila</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-<!-- Page header with logo and tagline end -->

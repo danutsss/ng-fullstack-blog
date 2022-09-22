@@ -12,7 +12,7 @@ import {
 import { Router } from '@angular/router';
 
 // User service.
-import { User } from './user';
+import { User } from '../models/user';
 
 @Injectable({
 	providedIn: 'root',
@@ -41,61 +41,6 @@ export class AuthService {
 	}
 
 	/**
-	 * Sign in with e-mail and password.
-	 * @param email - @string
-	 * @param password - @string
-	 */
-	async signIn(email: string, password: string) {
-		try {
-			const result = await this.afAuth.signInWithEmailAndPassword(email, password);
-
-			this.setUserData(result.user);
-			this.afAuth.authState.subscribe((user) => {
-				if (user) {
-					this.ngZone.run(() => {
-						this.router.navigate(['dashboard']);
-					});
-				}
-			});
-		} catch (error: any) {
-			alert(error.message);
-		}
-	}
-
-	/**
-	 * Sign up with e-mail and password.
-	 * @param email - @string
-	 * @param password - @string
-	 */
-	async signUp(email: string, password: string) {
-		try {
-			const result = await this.afAuth.createUserWithEmailAndPassword(
-				email,
-				password
-			);
-
-			/* Call the sendVerificationEmail() function when new user sign up and returns promise */
-			this.sendVerificationEmail();
-			this.setUserData(result.user);
-		} catch (error: any) {
-			alert(error.message);
-		}
-	}
-
-	/**
-	 * Forgot password option.
-	 * @param passwordResetEmail - @string
-	 */
-	async forgotPassword(passwordResetEmail: string) {
-		try {
-			const result = await this.afAuth.sendPasswordResetEmail(passwordResetEmail);
-			alert('Password reset email sent, check your inbox or spam folder.');
-		} catch (error: any) {
-			alert(error.message);
-		}
-	}
-
-	/**
 	 * Returns true when user is logged in and email is verified.
 	 */
 	get isLoggedIn(): boolean {
@@ -111,9 +56,8 @@ export class AuthService {
 			const result = await this.afAuth.signInWithPopup(
 				new firebaseAuth.GoogleAuthProvider()
 			);
-			this.ngZone.run(() => {
-				this.router.navigate(['dashboard']);
-			});
+
+			this.router.navigate(['dashboard']);
 			this.setUserData(result.user);
 		} catch (error: any) {
 			alert(error.message);
@@ -123,13 +67,11 @@ export class AuthService {
 	/**
 	 * Authentication logic for authentication providers.
 	 */
-	authLogin(provider: any) {
-		return this.afAuth.signInWithPopup(provider).then((result) => {
-			this.ngZone.run(() => {
-				this.router.navigate(['dashboard']);
-			});
-			this.setUserData(result.user);
-		});
+	async authLogin(provider: any) {
+		const result = await this.afAuth.signInWithPopup(provider);
+
+		this.router.navigate(['dashboard']);
+		this.setUserData(result.user);
 	}
 
 	/**
@@ -138,19 +80,7 @@ export class AuthService {
 	async signOut() {
 		await this.afAuth.signOut();
 		localStorage.removeItem('loggedUser');
-		this.router.navigate(['sign-in']);
-	}
-
-	/**
-	 * Send email verification when new user sign up.
-	 *
-	 */
-	async sendVerificationEmail() {
-		return await this.afAuth.currentUser.then((u: any) => {
-			u.sendEmailVerification().then(() => {
-				this.router.navigate(['verify-email']);
-			});
-		});
+		this.router.navigate(['']);
 	}
 
 	/**
