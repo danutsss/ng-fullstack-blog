@@ -21,6 +21,25 @@
 		}
 	}
 
+	&.navbar-inverse {
+		background-color: #f8f9fa !important;
+
+		.navbar-brand {
+			color: #000;
+		}
+
+		.nav-link {
+			color: grey;
+			&.active {
+				color: black;
+			}
+
+			&:hover {
+				color: black;
+			}
+		}
+	}
+
 	@media only screen and (min-width: 992px) {
 		border-bottom: 1px solid transparent;
 		background: transparent;
