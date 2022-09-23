@@ -27,7 +27,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -49,6 +49,7 @@ import { MatChipsModule } from '@angular/material/chips';
 		MatButtonModule,
 		MatCardModule,
 		MatChipsModule,
+		FlexLayoutModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
