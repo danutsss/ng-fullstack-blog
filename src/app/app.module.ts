@@ -28,6 +28,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { FlexLayoutModule } from '@angular/flex-layout';
+
+// Font Awesome 6.x
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -50,6 +53,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 		MatCardModule,
 		MatChipsModule,
 		FlexLayoutModule,
+		FontAwesomeModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
