@@ -11,7 +11,7 @@ import {
 // Angular router.
 import { Router } from '@angular/router';
 
-// User service.
+// User model.
 import { User } from '../models/user';
 
 @Injectable({
