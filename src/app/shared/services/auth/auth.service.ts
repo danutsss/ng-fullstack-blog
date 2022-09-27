@@ -49,6 +49,14 @@ export class AuthService {
 	}
 
 	/**
+	 * Returns true when user is admin.
+	 */
+	get isAdmin(): boolean {
+		const user = JSON.parse(localStorage.getItem('isAdmin')!);
+		return user !== null && user === true ? true : false;
+	}
+
+	/**
 	 * Google authenticaion provider.
 	 */
 	async googleAuth() {
@@ -56,7 +64,17 @@ export class AuthService {
 			const result = await this.afAuth.signInWithPopup(
 				new firebaseAuth.GoogleAuthProvider()
 			);
+
+			// Set user data in localStorage.
 			this.setUserData(result.user);
+
+			// Insert `isAdmin` into localStorage.
+			this.afStore
+				.doc(`users/${result.user?.uid}`)
+				.valueChanges()
+				.subscribe((res: any) => {
+					localStorage.setItem('isAdmin', JSON.stringify(res.isAdmin));
+				});
 		} catch (error: any) {
 			alert(error.message);
 		}
@@ -95,7 +113,7 @@ export class AuthService {
 			displayName: user.displayName,
 			photoURL: user.photoURL,
 			emailVerified: user.emailVerified,
-			isAdmin: false,
+			isAdmin: (user.isAdmin = false),
 		};
 
 		return userRef.set(userData, { merge: true });
