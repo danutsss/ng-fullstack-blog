@@ -31,7 +31,9 @@
                 </li>
 
                 <li class="nav-item">
-                    <a *ngIf="authService.isLoggedIn && authService.isAdmin" class="nav-link">Create post</a>
+                    <button mat-mini-fab color="primary" aria-label="Create post button with plus icon">
+                        <mat-icon>add</mat-icon>
+                    </button>
                 </li>
             </ul>
         </div>

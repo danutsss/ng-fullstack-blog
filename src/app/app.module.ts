@@ -22,16 +22,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
+import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 
 // Import Angular Material components.
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatIconModule } from '@angular/material/icon';
 
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -42,7 +43,7 @@ import { CreatePostDialogComponent } from './shared/components/create-post-dialo
 		AboutComponent,
 		ContactComponent,
 		FooterComponent,
-  CreatePostDialogComponent,
+		CreatePostDialogComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -56,6 +57,7 @@ import { CreatePostDialogComponent } from './shared/components/create-post-dialo
 		MatChipsModule,
 		FlexLayoutModule,
 		FontAwesomeModule,
+		MatIconModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
