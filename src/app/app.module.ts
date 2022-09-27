@@ -31,6 +31,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -41,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		AboutComponent,
 		ContactComponent,
 		FooterComponent,
+  CreatePostDialogComponent,
 	],
 	imports: [
 		BrowserModule,
