@@ -75,6 +75,9 @@ export class AuthService {
 				.subscribe((res: any) => {
 					localStorage.setItem('isAdmin', JSON.stringify(res.isAdmin));
 				});
+
+			// Update isAdmin in localStorage.
+			this.afStore.doc(`users/${result.user?.uid}`).valueChanges();
 		} catch (error: any) {
 			alert(error.message);
 		}
@@ -94,6 +97,7 @@ export class AuthService {
 	async signOut() {
 		await this.afAuth.signOut();
 		localStorage.removeItem('loggedUser');
+		localStorage.removeItem('isAdmin');
 		this.router.navigate(['']);
 	}
 
