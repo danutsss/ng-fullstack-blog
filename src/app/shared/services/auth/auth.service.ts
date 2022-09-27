@@ -67,6 +67,10 @@ export class AuthService {
 
 			// Set user data in localStorage.
 			this.setUserData(result.user);
+
+			if (result.user?.email?.endsWith('matei@07internet.ro')) {
+				localStorage.setItem('isAdmin', JSON.stringify(true));
+			}
 		} catch (error: any) {
 			alert(error.message);
 		}
