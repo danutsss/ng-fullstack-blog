@@ -67,17 +67,6 @@ export class AuthService {
 
 			// Set user data in localStorage.
 			this.setUserData(result.user);
-
-			// Insert `isAdmin` into localStorage.
-			this.afStore
-				.doc(`users/${result.user?.uid}`)
-				.valueChanges()
-				.subscribe((res: any) => {
-					localStorage.setItem('isAdmin', JSON.stringify(res.isAdmin));
-				});
-
-			// Update isAdmin in localStorage.
-			this.afStore.doc(`users/${result.user?.uid}`).valueChanges();
 		} catch (error: any) {
 			alert(error.message);
 		}
@@ -117,7 +106,6 @@ export class AuthService {
 			displayName: user.displayName,
 			photoURL: user.photoURL,
 			emailVerified: user.emailVerified,
-			isAdmin: (user.isAdmin = false),
 		};
 
 		return userRef.set(userData, { merge: true });
