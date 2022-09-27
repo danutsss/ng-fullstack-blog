@@ -4,6 +4,11 @@ import { Router } from '@angular/router';
 // Import Authentification service.
 import { AuthService } from '../../../shared/services/auth/auth.service';
 
+// Import Angular Material Dialog component.
+import { MatDialog } from '@angular/material/dialog';
+
+// Import Create Post Dialog component.
+import { CreatePostDialogComponent } from '../create-post-dialog/create-post-dialog.component';
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
@@ -12,7 +17,11 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 export class NavbarComponent implements OnInit {
 	public isCollapsed: boolean = true;
 
-	constructor(public authService: AuthService, public route: Router) {}
+	constructor(
+		public authService: AuthService,
+		public route: Router,
+		public dialog: MatDialog
+	) {}
 
 	ngOnInit(): void {}
 
@@ -28,4 +37,12 @@ export class NavbarComponent implements OnInit {
 			element.classList.remove('mat-elevation-z8');
 		}
 	};
+
+	openDialog() {
+		const dialogRef = this.dialog.open(CreatePostDialogComponent);
+
+		dialogRef.afterClosed().subscribe((result) => {
+			console.log(`Dialog result: ${result}`);
+		});
+	}
 }

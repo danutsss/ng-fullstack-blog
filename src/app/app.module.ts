@@ -30,7 +30,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
-
+import { MatDialogModule } from '@angular/material/dialog';
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
@@ -58,6 +58,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		FlexLayoutModule,
 		FontAwesomeModule,
 		MatIconModule,
+		MatDialogModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
