@@ -28,7 +28,7 @@ export class CreatePostDialogComponent implements OnInit {
 	ngOnInit(): void {}
 
 	createPost() {
-		let newSlug = this.title
+		const newSlug = this.title
 			.toLowerCase()
 			.replace(/ /g, '-')
 			.replace(/[^\w-]+/g, '');
