@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 
 // Import Angular Firestore.
 import {
@@ -19,9 +19,9 @@ import { map } from 'rxjs/operators';
 export class PostService {
 	postsCollection: AngularFirestoreCollection<Post>;
 	postDoc!: AngularFirestoreDocument<Post>;
-	constructor(private afs: AngularFirestore) {
+	constructor(private afs: AngularFirestore, public ngZone: NgZone) {
 		this.postsCollection = this.afs.collection('posts', (ref) =>
-			ref.orderBy('date', 'desc')
+			ref.orderBy('published', 'desc')
 		);
 	}
 
@@ -30,13 +30,13 @@ export class PostService {
 	 */
 	getPosts() {
 		return this.postsCollection.snapshotChanges().pipe(
-			map((actions: any) => {
-				return actions.map((action: any) => {
-					const data = action.payload.doc.data() as Post;
-					const id = action.payload.doc.id;
+			map((actions: any) =>
+				actions.map((a: any) => {
+					const data = a.payload.doc.data() as Post;
+					const id = a.payload.doc.id;
 					return { id, ...data };
-				});
-			})
+				})
+			)
 		);
 	}
 
@@ -44,7 +44,7 @@ export class PostService {
 	 * Get post data by id.
 	 * @param id - Post ID.
 	 */
-	getPosteData(id: string) {
+	getPostData(id: string) {
 		this.postDoc = this.afs.doc<Post>(`posts/${id}`);
 		return this.postDoc.valueChanges();
 	}
