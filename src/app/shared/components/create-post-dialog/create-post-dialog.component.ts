@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 
 // Import Angular Firestore.
-import {
-	AngularFirestore,
-	AngularFirestoreDocument,
-} from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 // Import post & auth service.
 import { PostService } from '../../../shared/services/post/post.service';
