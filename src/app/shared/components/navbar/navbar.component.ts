@@ -17,6 +17,8 @@ import { CreatePostDialogComponent } from '../create-post-dialog/create-post-dia
 })
 export class NavbarComponent implements OnInit {
 	public isCollapsed: boolean = true;
+	public isDialogOpened: boolean = false;
+	public dialogRef: any;
 
 	constructor(
 		public authService: AuthService,
@@ -40,12 +42,19 @@ export class NavbarComponent implements OnInit {
 	};
 
 	openDialog() {
-		const dialogRef = this.dialog.open(CreatePostDialogComponent, {
+		if (this.isDialogOpened) {
+			return;
+		}
+
+		this.isDialogOpened = true;
+
+		this.dialogRef = this.dialog.open(CreatePostDialogComponent, {
 			width: '600px',
 		});
 
-		dialogRef.afterClosed().subscribe((result) => {
-			console.log(`Dialog result: ${result}`);
+		this.dialogRef.afterClosed().subscribe((result: any) => {
+			console.log('The dialog was closed');
+			this.isDialogOpened = false;
 		});
 	}
 }
