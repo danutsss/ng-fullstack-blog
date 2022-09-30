@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 
 // Import Create Post Dialog component.
 import { CreatePostDialogComponent } from '../create-post-dialog/create-post-dialog.component';
+
 @Component({
 	selector: 'app-navbar',
 	templateUrl: './navbar.component.html',
@@ -39,7 +40,9 @@ export class NavbarComponent implements OnInit {
 	};
 
 	openDialog() {
-		const dialogRef = this.dialog.open(CreatePostDialogComponent);
+		const dialogRef = this.dialog.open(CreatePostDialogComponent, {
+			width: '600px',
+		});
 
 		dialogRef.afterClosed().subscribe((result) => {
 			console.log(`Dialog result: ${result}`);

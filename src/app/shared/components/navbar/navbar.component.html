@@ -31,8 +31,8 @@
                 </li>
 
                 <li class="nav-item">
-                    <button mat-mini-fab color="primary" aria-label="Create post button with plus icon"
-                        (click)="openDialog()">
+                    <button *ngIf="authService.isLoggedIn && authService.isAdmin" mat-mini-fab color="primary"
+                        aria-label="Create post button with plus icon" (click)="openDialog()">
                         <mat-icon>add</mat-icon>
                     </button>
                 </li>
