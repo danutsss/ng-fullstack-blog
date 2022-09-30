@@ -29,7 +29,7 @@ export class AuthService {
 		 * Saving user data into localStorage when
 		 * logged in and remove it when logged out.
 		 */
-		this.afAuth.authState.subscribe((user) => {
+		this.afAuth.authState.subscribe((user: any) => {
 			if (user) {
 				this.userData = user;
 				localStorage.setItem('loggedUser', JSON.stringify(this.userData));

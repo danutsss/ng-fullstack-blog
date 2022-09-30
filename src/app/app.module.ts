@@ -1,6 +1,8 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 // Firebase.
 import { AngularFireModule } from '@angular/fire/compat';
@@ -17,7 +19,6 @@ import { AuthService } from './shared/services/auth/auth.service';
 // Layout components.
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -31,14 +32,17 @@ import { MatChipsModule } from '@angular/material/chips';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
 	declarations: [
 		AppComponent,
 		DashboardComponent,
 		NavbarComponent,
-		HomeComponent,
 		HeaderComponent,
 		AboutComponent,
 		ContactComponent,
@@ -59,6 +63,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		FontAwesomeModule,
 		MatIconModule,
 		MatDialogModule,
+		MatFormFieldModule,
+		MatInputModule,
+		FormsModule,
+		CommonModule,
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
