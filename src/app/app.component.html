@@ -2,6 +2,7 @@
     <app-navbar *ngIf="!isDashboardRoute()"></app-navbar>
     <app-header *ngIf="!isDashboardRoute()"></app-header>
     <div fxFlex>
+        <app-dashboard *ngIf="isDashboardRoute()"></app-dashboard>
         <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>

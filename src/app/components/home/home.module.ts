@@ -30,10 +30,6 @@ const routes: Routes = [
 		path: ':id',
 		component: PostDetailComponent,
 	},
-	{
-		path: 'page/:pageNum',
-		component: PostListComponent,
-	},
 ];
 
 @NgModule({
