@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 // Import post service.
-import { PostService } from '../../../shared/services/post/post.service';
+import { PostService } from 'src/app/shared/services/post/post.service';
 import { Post } from '../../../shared/services/models/post';
 import { AuthService } from '../../../shared/services/auth/auth.service';
 
@@ -12,7 +12,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 	styleUrls: ['./post-list.component.scss'],
 })
 export class PostListComponent implements OnInit {
-	posts!: Observable<Post[]>;
+	posts$!: Observable<Post[]>;
 
 	constructor(
 		private postService: PostService,
@@ -20,6 +20,6 @@ export class PostListComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {
-		this.posts = this.postService.getPosts();
+		this.posts$ = this.postService.getPosts();
 	}
 }

@@ -3,25 +3,28 @@
     <div class="row">
         <!-- Blog entries start -->
         <div class="col-lg-8">
-            <div *ngIf="posts" class="row">
-                <div *ngFor="let post of posts | async" class="col-lg-6">
-                    <mat-card class="mb-4">
-                        <img class="card-img-top mb-2" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                            alt="..." />
-                        <mat-card-content>
-                            <div class="small text-muted">Postat de: {{ post.author }} &bull; la data de:
-                                {{ post.published.toDate() | date: 'mediumDate' }}
-                            </div>
-                            <h2 class="card-title">{{ (post.title.length > 30) ? (post.title | slice:0:30) + ' ...'
-                                : (post.title) }}</h2>
-                            <p class="card-text">{{ (post.content.length > 50) ? (post.content | slice:0:50) + ' ...'
-                                : (post.content) }}</p>
-                            <a mat-raised-button color="primary" routerLink="{{ post.id }}">Citeste mai mult →</a>
-                        </mat-card-content>
-                    </mat-card>
+            <div *ngIf="posts$ | async as posts" class="row">
+                <div class="row" *ngIf="posts.length > 0">
+                    <div *ngFor="let post of posts" class="col-lg-6">
+                        <mat-card class="mb-4">
+                            <img class="card-img-top mb-2" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
+                                alt="..." />
+                            <mat-card-content>
+                                <div class="small text-muted">Postat de: {{ post.author }} &bull; la data de:
+                                    {{ post.published.toDate() | date: 'mediumDate' }}
+                                </div>
+                                <h2 class="card-title">{{ (post.title.length > 30) ? (post.title | slice:0:30) + ' ...'
+                                    : (post.title) }}</h2>
+                                <p class="card-text">{{ (post.content.length > 50) ? (post.content | slice:0:50) + '
+                                    ...'
+                                    : (post.content) }}</p>
+                                <a mat-raised-button color="primary" routerLink="{{ post.id }}">Citeste mai mult →</a>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
                 </div>
+                <div *ngIf="posts.length === 0" class="text-center">There are no posts yet.</div>
             </div>
-            <div *ngElse class="text-center">There are no posts.</div>
         </div>
         <!-- Blog entries end -->
 
