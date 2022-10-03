@@ -23,4 +23,12 @@ export class AppComponent {
 	isDashboardRoute() {
 		return this.router.url === '/dashboard';
 	}
+
+	isContactRoute() {
+		return this.router.url === '/contact';
+	}
+
+	isAboutRoute() {
+		return this.router.url === '/about';
+	}
 }

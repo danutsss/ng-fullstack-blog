@@ -3,6 +3,8 @@
     <app-header *ngIf="!isDashboardRoute()"></app-header>
     <div fxFlex>
         <app-dashboard *ngIf="isDashboardRoute()"></app-dashboard>
+        <app-contact *ngIf="isContactRoute()"></app-contact>
+        <app-about *ngIf="isAboutRoute()"></app-about>
         <router-outlet></router-outlet>
     </div>
     <app-footer></app-footer>
