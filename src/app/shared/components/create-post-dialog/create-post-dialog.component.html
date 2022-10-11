@@ -4,9 +4,6 @@
         <mat-label>titlu postare</mat-label>
         <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
     </mat-form-field>
-    <br />
-
     <quill-editor [style.height.px]="300" [(ngModel)]="content" name="content"></quill-editor>
-    <br />
     <button mat-raised-button (click)="createPost()" color="accent" [disabled]="!title || !content">{{saving}}</button>
 </mat-dialog-content>
