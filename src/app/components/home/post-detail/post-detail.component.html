@@ -15,13 +15,8 @@
                     <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
                 </header>
-                <!-- Preview image figure-->
-                <figure class="mb-4"><img class="img-fluid rounded"
-                        src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>
                 <!-- Post content-->
-                <section class="container mb-5">
-                    <p class="fs-5 mb-4" style="word-break: break-all;">{{post.content}}</p>
-                </section>
+                <section class="container mb-5" [innerHtml]="post.content | noSanitize"></section>
             </article>
             <!-- Comments section-->
             <!-- <section class="mb-5">

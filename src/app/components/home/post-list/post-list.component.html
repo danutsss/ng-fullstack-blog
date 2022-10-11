@@ -7,19 +7,19 @@
                 <div class="row" *ngIf="posts.length > 0">
                     <div *ngFor="let post of posts" class="col-lg-6">
                         <mat-card class="mb-4">
-                            <img class="card-img-top mb-2" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <mat-card-title>{{ (post.title.length > 30) ? (post.title | slice:0:30) + ' ...' :
+                                (post.title) }}</mat-card-title>
+                            <mat-card-subtitle>Postat de: {{ post.author }} &bull; la data de:
+                                {{ post.published.toDate() | date: 'mediumDate' }}</mat-card-subtitle>
                             <mat-card-content>
-                                <div class="small text-muted">Postat de: {{ post.author }} &bull; la data de:
-                                    {{ post.published.toDate() | date: 'mediumDate' }}
-                                </div>
-                                <h2 class="card-title">{{ (post.title.length > 30) ? (post.title | slice:0:30) + ' ...'
-                                    : (post.title) }}</h2>
-                                <p class="card-text">{{ (post.content.length > 50) ? (post.content | slice:0:50) + '
+                                <p class="card-text" [innerHtml]="(post.content.length > 50) ? (post.content | slice:0:50) + '
                                     ...'
-                                    : (post.content) }}</p>
-                                <a mat-raised-button color="primary" routerLink="{{ post.id }}">Citeste mai mult →</a>
+                                    : (post.content) | noSanitize"></p>
                             </mat-card-content>
+                            <mat-divider inset></mat-divider>
+                            <mat-card-actions>
+                                <a mat-raised-button color="primary" routerLink="{{ post.id }}">Citeste mai mult →</a>
+                            </mat-card-actions>
                         </mat-card>
                     </div>
                 </div>
