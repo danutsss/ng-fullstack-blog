@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 // Import post service.
@@ -12,7 +12,10 @@ import { Post } from 'src/app/shared/services/models/post';
 })
 export class PostDetailComponent implements OnInit {
 	post!: Post;
-	constructor(private postService: PostService, private route: ActivatedRoute) {}
+	constructor(
+		private postService: PostService,
+		private route: ActivatedRoute
+	) {}
 
 	ngOnInit(): void {
 		this.getPost();
@@ -20,8 +23,8 @@ export class PostDetailComponent implements OnInit {
 
 	getPost() {
 		const id = this.route.snapshot.paramMap.get('id') as string;
-		this.postService
-			.getPostData(id)
-			.subscribe((post) => (this.post = post as Post));
+		this.postService.getPostData(id).subscribe((post) => {
+			this.post = post as Post;
+		});
 	}
 }
