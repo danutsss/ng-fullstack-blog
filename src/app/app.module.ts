@@ -29,7 +29,6 @@ import { CreatePostDialogComponent } from './shared/components/create-post-dialo
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -59,7 +58,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		MatButtonModule,
 		MatCardModule,
 		MatChipsModule,
-		FlexLayoutModule,
 		FontAwesomeModule,
 		MatIconModule,
 		MatDialogModule,

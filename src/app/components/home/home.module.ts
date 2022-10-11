@@ -7,7 +7,6 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -39,7 +38,6 @@ const routes: Routes = [
 		MatButtonModule,
 		MatCardModule,
 		MatChipsModule,
-		FlexLayoutModule,
 		MatIconModule,
 		MatDialogModule,
 		MatFormFieldModule,
