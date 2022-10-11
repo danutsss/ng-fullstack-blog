@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
 
 // Import components.
 import { PostListComponent } from './post-list/post-list.component';
@@ -18,6 +19,9 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 
 // Import post service.
 import { PostService } from 'src/app/shared/services/post/post.service';
+
+// Import No Sanitize Pipe.
+import { NoSanitizePipe } from 'src/app/shared/util/nosanitizerpipe';
 
 const routes: Routes = [
 	{
@@ -32,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PostListComponent, PostDetailComponent],
+	declarations: [PostListComponent, PostDetailComponent, NoSanitizePipe],
 	imports: [
 		CommonModule,
 		MatButtonModule,
@@ -44,6 +48,7 @@ const routes: Routes = [
 		MatSelectModule,
 		FormsModule,
 		RouterModule.forChild(routes),
+		MatDividerModule,
 	],
 	providers: [PostService],
 })
