@@ -37,6 +37,9 @@ import { MatInputModule } from '@angular/material/input';
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+// Import Quill Module.
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -65,6 +68,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		MatInputModule,
 		FormsModule,
 		CommonModule,
+		QuillModule.forRoot(),
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
