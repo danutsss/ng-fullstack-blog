@@ -49,8 +49,8 @@ export class NavbarComponent implements OnInit {
 		this.isDialogOpened = true;
 
 		this.dialogRef = this.dialog.open(CreatePostDialogComponent, {
-			width: '700px',
-			height: '600px',
+			width: '1600px',
+			height: '750px',
 		});
 
 		this.dialogRef.afterClosed().subscribe((result: any) => {
