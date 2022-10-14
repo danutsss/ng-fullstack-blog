@@ -1,9 +1,12 @@
 <h2 mat-dialog-title>Creeaza postare</h2>
-<mat-dialog-content class="mat-typography" align="center">
+<mat-dialog-content class="mat-typography d-flex flex-column align-items-center">
     <mat-form-field appearance="outline" [style.width.px]="600">
         <mat-label>titlu postare</mat-label>
         <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
     </mat-form-field>
-    <quill-editor [style.height.px]="300" [(ngModel)]="content" name="content"></quill-editor>
+    <quill-editor [(ngModel)]="content" name="content"></quill-editor>
+
+    <br />
+
     <button mat-raised-button (click)="createPost()" color="accent" [disabled]="!title || !content">{{saving}}</button>
 </mat-dialog-content>

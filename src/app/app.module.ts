@@ -39,6 +39,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Import Quill Module.
 import { QuillModule } from 'ngx-quill';
+import Quill from 'quill';
+import QuillResizeModule from '@botom/quill-resize-module';
+
+// Register the Quill Resize Module.
+Quill.register('modules/resize', QuillResizeModule);
 
 @NgModule({
 	declarations: [
@@ -68,7 +73,13 @@ import { QuillModule } from 'ngx-quill';
 		MatInputModule,
 		FormsModule,
 		CommonModule,
-		QuillModule.forRoot(),
+		QuillModule.forRoot({
+			modules: {
+				resize: {
+					locale: {},
+				},
+			},
+		}),
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
