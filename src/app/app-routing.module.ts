@@ -15,6 +15,11 @@ import { HomeModule } from './components/home/home.module';
 const routes: Routes = [
 	{
 		path: '',
+		redirectTo: 'blog',
+		pathMatch: 'full',
+	},
+	{
+		path: '',
 		loadChildren: () => HomeModule,
 	},
 	{
