@@ -14,11 +14,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 })
 export class AppComponent {
 	title = 'ng-fullstack-blog';
-	constructor(
-		private firestore: AngularFirestore,
-		public authService: AuthService,
-		private router: Router
-	) {}
+	constructor(public authService: AuthService, private router: Router) {}
 
 	isDashboardRoute() {
 		return this.router.url === '/dashboard';
