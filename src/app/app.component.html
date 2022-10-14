@@ -1,7 +1,12 @@
-<app-navbar *ngIf="!isDashboardRoute()"></app-navbar>
-<app-header *ngIf="!isDashboardRoute()"></app-header>
-<app-dashboard *ngIf="isDashboardRoute()"></app-dashboard>
-<app-contact *ngIf="isContactRoute()"></app-contact>
-<app-about *ngIf="isAboutRoute()"></app-about>
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+<header>
+    <app-navbar *ngIf="!isDashboardRoute()"></app-navbar>
+</header>
+
+<main>
+    <app-header *ngIf="!isDashboardRoute()"></app-header>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+    <app-footer *ngIf="!isDashboardRoute()"></app-footer>
+</footer>

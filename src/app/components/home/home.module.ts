@@ -25,12 +25,12 @@ import { NoSanitizePipe } from 'src/app/shared/util/nosanitizerpipe';
 
 const routes: Routes = [
 	{
-		path: '',
-		pathMatch: 'full',
+		path: 'blog',
+		// pathMatch: 'full',
 		component: PostListComponent,
 	},
 	{
-		path: ':id',
+		path: 'blog/:id',
 		component: PostDetailComponent,
 	},
 ];
