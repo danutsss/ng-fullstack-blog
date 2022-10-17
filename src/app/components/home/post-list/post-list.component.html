@@ -1,0 +1,84 @@
+<!-- Page content start -->
+<div class="container">
+    <div class="row">
+        <!-- Blog entries start -->
+        <div class="col-lg-8">
+            <div *ngIf="posts$ | async as posts" class="row">
+                <div class="row" *ngIf="posts.length > 0">
+                    <div *ngFor="let post of posts" class="col-lg-6">
+                        <mat-card class="mb-4">
+                            <mat-card-title>{{ (post.title.length > 30) ? (post.title | slice:0:30) + ' ...' :
+                                (post.title) }}</mat-card-title>
+                            <mat-card-subtitle>Postat de: {{ post.author }} &bull; la data de:
+                                {{ post.published.toDate() | date: 'mediumDate' }}</mat-card-subtitle>
+                            <mat-card-content>
+                                <p class="card-text" [innerHtml]="(post.content.length > 50) ? (post.content | slice:0:50) + '
+                                    ...'
+                                    : (post.content)"></p>
+                            </mat-card-content>
+                            <mat-divider inset></mat-divider>
+                            <mat-card-actions class="d-flex justify-content-between">
+                                <a mat-raised-button color="primary" routerLink="{{ post.id }}">Citeste mai mult →</a>
+                                <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
+                                    (click)="deletePost(post.id!)">Sterge</button>
+                            </mat-card-actions>
+                        </mat-card>
+                    </div>
+                </div>
+                <div *ngIf="posts.length === 0" class="text-center">There are no posts yet.</div>
+            </div>
+        </div>
+        <!-- Blog entries end -->
+
+        <!-- Side widgets start -->
+        <div class="col-lg-4">
+            <!-- Search widget start -->
+            <div class="card mb-4">
+                <div class="card-header">Cautare</div>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Introduceti termenul de cautare..."
+                            aria-label="Introduceti termenul de cautare..." aria-describedby="button-search" />
+                        <button mat-flat-button color="primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Search widget end -->
+
+            <!-- Categories widget start -->
+            <div class="card mb-4">
+                <div class="card-header">Categories</div>
+                <div class="card-body">
+                    <div class="row">
+                        <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
+                            <mat-chip class="example-box" cdkDrag>
+                                Web design
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                Freebies
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                Bootstrap
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                HTML & CSS
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                Angular
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                Vue
+                            </mat-chip>
+                            <mat-chip class="example-box" cdkDrag>
+                                React
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+            </div>
+            <!-- Categories widget end -->
+        </div>
+        <!-- Side widgets end -->
+    </div>
+</div>
+<!-- Page content end -->

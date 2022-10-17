@@ -1,0 +1,21 @@
+<div align="center">
+    <div mat-dialog-title class="d-flex justify-content-between">
+        <h2>Creeaza postare</h2>
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon>close</mat-icon>
+        </button>
+    </div>
+
+    <mat-form-field appearance="outline" [style.width.px]="600">
+        <mat-label>titlu postare</mat-label>
+        <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
+    </mat-form-field>
+    <quill-editor [(ngModel)]="content" name="content" [style.height.px]="350"></quill-editor>
+
+    <br />
+
+    <mat-dialog-actions align="center">
+        <button mat-raised-button (click)="createPost()" color="accent"
+            [disabled]="!title || !content">{{saving}}</button>
+    </mat-dialog-actions>
+</div>

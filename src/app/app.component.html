@@ -1,8 +1,12 @@
-<div fxLayout="column" fxFlexFill>
+<header>
     <app-navbar *ngIf="!isDashboardRoute()"></app-navbar>
+</header>
+
+<main>
     <app-header *ngIf="!isDashboardRoute()"></app-header>
-    <div fxFlex>
-        <router-outlet></router-outlet>
-    </div>
-    <app-footer></app-footer>
-</div>
+    <router-outlet></router-outlet>
+</main>
+
+<footer>
+    <app-footer *ngIf="!isDashboardRoute()"></app-footer>
+</footer>

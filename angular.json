@@ -29,7 +29,11 @@
 							"./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
 							"./node_modules/bootstrap/dist/css/bootstrap.min.css"
 						],
-						"scripts": []
+						"scripts": [],
+						"allowedCommonJsDependencies": [
+							"quill",
+							"@botom/quill-resize-module"
+						]
 					},
 					"configurations": {
 						"production": {

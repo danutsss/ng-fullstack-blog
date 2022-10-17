@@ -11,7 +11,7 @@ import {
 // Angular router.
 import { Router } from '@angular/router';
 
-// User service.
+// User model.
 import { User } from '../models/user';
 
 @Injectable({
@@ -29,7 +29,7 @@ export class AuthService {
 		 * Saving user data into localStorage when
 		 * logged in and remove it when logged out.
 		 */
-		this.afAuth.authState.subscribe((user) => {
+		this.afAuth.authState.subscribe((user: any) => {
 			if (user) {
 				this.userData = user;
 				localStorage.setItem('loggedUser', JSON.stringify(this.userData));
@@ -49,6 +49,14 @@ export class AuthService {
 	}
 
 	/**
+	 * Returns true when user is admin.
+	 */
+	get isAdmin(): boolean {
+		const user = JSON.parse(localStorage.getItem('isAdmin')!);
+		return user !== null && user === true ? true : false;
+	}
+
+	/**
 	 * Google authenticaion provider.
 	 */
 	async googleAuth() {
@@ -56,7 +64,13 @@ export class AuthService {
 			const result = await this.afAuth.signInWithPopup(
 				new firebaseAuth.GoogleAuthProvider()
 			);
+
+			// Set user data in localStorage.
 			this.setUserData(result.user);
+
+			if (result.user?.email?.endsWith('matei@07internet.ro')) {
+				localStorage.setItem('isAdmin', JSON.stringify(true));
+			}
 		} catch (error: any) {
 			alert(error.message);
 		}
@@ -76,6 +90,7 @@ export class AuthService {
 	async signOut() {
 		await this.afAuth.signOut();
 		localStorage.removeItem('loggedUser');
+		localStorage.removeItem('isAdmin');
 		this.router.navigate(['']);
 	}
 
@@ -95,7 +110,6 @@ export class AuthService {
 			displayName: user.displayName,
 			photoURL: user.photoURL,
 			emailVerified: user.emailVerified,
-			isAdmin: false,
 		};
 
 		return userRef.set(userData, { merge: true });
