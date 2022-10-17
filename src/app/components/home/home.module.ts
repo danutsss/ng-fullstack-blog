@@ -23,6 +23,9 @@ import { PostService } from 'src/app/shared/services/post/post.service';
 // Import No Sanitize Pipe.
 import { NoSanitizePipe } from 'src/app/shared/util/nosanitizerpipe';
 
+// Import Ngx Pagination module.
+import { NgxPaginationModule } from 'ngx-pagination';
+
 const routes: Routes = [
 	{
 		path: 'blog',
@@ -49,6 +52,7 @@ const routes: Routes = [
 		FormsModule,
 		RouterModule.forChild(routes),
 		MatDividerModule,
+		NgxPaginationModule,
 	],
 	providers: [PostService],
 })
