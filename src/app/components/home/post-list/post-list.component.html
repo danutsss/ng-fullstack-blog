@@ -80,7 +80,12 @@
             <!-- Categories widget end -->
         </div>
         <!-- Side widgets end -->
+        <div class="col-lg-8">
+            <pagination-controls align="center" (pageChange)="pageChanged($event)"
+                (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true"
+                previousLabel="Previous" nextLabel="Next">
+            </pagination-controls>
+        </div>
     </div>
-    <pagination-controls align="center" (pageChange)="pageChanged($event)"></pagination-controls>
 </div>
 <!-- Page content end -->
