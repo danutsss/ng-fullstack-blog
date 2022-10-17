@@ -21,8 +21,6 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 
@@ -53,8 +51,6 @@ Quill.register('modules/resize', QuillResizeModule);
 		DashboardComponent,
 		NavbarComponent,
 		HeaderComponent,
-		AboutComponent,
-		ContactComponent,
 		FooterComponent,
 		CreatePostDialogComponent,
 	],
