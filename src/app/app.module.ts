@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 // Firebase.
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -61,10 +63,12 @@ Quill.register('modules/resize', QuillResizeModule);
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
+		AngularFireStorageModule,
 		BrowserAnimationsModule,
 		NgbModule,
 		MatButtonModule,
 		MatCardModule,
+		MatProgressBarModule,
 		MatChipsModule,
 		FontAwesomeModule,
 		MatIconModule,

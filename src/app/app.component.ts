@@ -10,7 +10,7 @@ import { AuthService } from './shared/services/auth/auth.service';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-	title = 'ng-fullstack-blog';
+	title: string = "Blogu' lui Qirila";
 	constructor(public authService: AuthService, private router: Router) {}
 
 	isDashboardRoute() {
