@@ -1,6 +1,6 @@
 <!-- Page content-->
 <div *ngIf="post" class="container mt-5">
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-lg-8">
             <!-- Post content-->
             <article>
@@ -15,6 +15,9 @@
                     <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
                 </header>
+                <figure class="mb-4">
+                    <img class="img-fluid rounded" src="{{ post.backgroundImage }}" alt="{{ post.title }}" />
+                </figure>
                 <!-- Post content-->
                 <section class="container mb-5 word-break" [innerHtml]="post.content"></section>
             </article>

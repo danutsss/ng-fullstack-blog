@@ -6,13 +6,24 @@
         </button>
     </div>
 
-    <mat-form-field appearance="outline" [style.width.px]="600">
+    <mat-form-field appearance="outline" [style.width.px]="600" class="mb-4">
         <mat-label>titlu postare</mat-label>
         <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
     </mat-form-field>
-    <quill-editor [(ngModel)]="content" name="content" [style.height.px]="350"></quill-editor>
 
-    <br />
+    <div class="mb-4">
+        <input type="file" id="file" #postImage (change)="uploadImage($event)" name="postImage" autocomplete="off" />
+        <div [hidden]="!uploadPercent" class="mt-2">
+            <mat-progress-bar mode="determinate" [style.width.px]="600" value="{{ uploadPercent | async }}">
+            </mat-progress-bar>
+        </div>
+        <div [hidden]="!image">
+            <img [src]="image || '//:0'" width="600" height="250" />
+        </div>
+
+    </div>
+
+    <quill-editor [(ngModel)]="content" name="content" [style.height.px]="350"></quill-editor>
 
     <mat-dialog-actions align="center">
         <button mat-raised-button (click)="createPost()" color="accent"

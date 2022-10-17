@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 // Firebase.
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,8 +21,6 @@ import { AuthService } from './shared/services/auth/auth.service';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AboutComponent } from './components/about/about.component';
-import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 
@@ -33,6 +32,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -51,8 +51,6 @@ Quill.register('modules/resize', QuillResizeModule);
 		DashboardComponent,
 		NavbarComponent,
 		HeaderComponent,
-		AboutComponent,
-		ContactComponent,
 		FooterComponent,
 		CreatePostDialogComponent,
 	],
@@ -61,10 +59,12 @@ Quill.register('modules/resize', QuillResizeModule);
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
+		AngularFireStorageModule,
 		BrowserAnimationsModule,
 		NgbModule,
 		MatButtonModule,
 		MatCardModule,
+		MatProgressBarModule,
 		MatChipsModule,
 		FontAwesomeModule,
 		MatIconModule,
