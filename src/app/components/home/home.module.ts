@@ -21,8 +21,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 import { PostService } from 'src/app/shared/services/post/post.service';
 
 // Import custom pipes.
-import { NoSanitizePipe } from 'src/app/shared/util/nosanitizerpipe';
-import { SlicePipe } from 'src/app/shared/util/slicepipe';
+import { NoSanitizePipe } from 'src/app/shared/util/nosanitizer.pipe';
+import { TruncatePipe } from 'src/app/shared/util/truncate.pipe';
 
 const routes: Routes = [
 	{
@@ -41,7 +41,7 @@ const routes: Routes = [
 		PostListComponent,
 		PostDetailComponent,
 		NoSanitizePipe,
-		SlicePipe,
+		TruncatePipe,
 	],
 	imports: [
 		CommonModule,
