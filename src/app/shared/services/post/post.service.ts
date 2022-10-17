@@ -22,7 +22,7 @@ export class PostService {
 
 	constructor(private afs: AngularFirestore) {
 		this.postsCollection = this.afs.collection('posts', (ref) =>
-			ref.orderBy('published', 'desc').limit(5)
+			ref.orderBy('published', 'desc')
 		);
 	}
 
