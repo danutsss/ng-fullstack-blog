@@ -20,8 +20,9 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 // Import post service.
 import { PostService } from 'src/app/shared/services/post/post.service';
 
-// Import No Sanitize Pipe.
-import { NoSanitizePipe } from 'src/app/shared/util/nosanitizerpipe';
+// Import custom pipes.
+import { NoSanitizePipe } from 'src/app/shared/util/nosanitizer.pipe';
+import { TruncatePipe } from 'src/app/shared/util/truncate.pipe';
 
 const routes: Routes = [
 	{
@@ -36,7 +37,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	declarations: [PostListComponent, PostDetailComponent, NoSanitizePipe],
+	declarations: [
+		PostListComponent,
+		PostDetailComponent,
+		NoSanitizePipe,
+		TruncatePipe,
+	],
 	imports: [
 		CommonModule,
 		MatButtonModule,
