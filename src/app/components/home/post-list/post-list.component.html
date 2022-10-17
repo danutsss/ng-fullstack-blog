@@ -9,7 +9,8 @@
             </div>
             <div *ngIf="posts$ | async as posts" class="row">
                 <div class="row" *ngIf="posts.length > 0">
-                    <div *ngFor="let post of posts">
+                    <div
+                        *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: page, totalItems: posts.length - 1 }">
                         <mat-card class="mb-4">
                             <mat-card-title>{{ post.title | truncatePipe:35:'...' }}</mat-card-title>
                             <mat-card-subtitle>Postat de: {{ post.author }} &bull; la data de:
@@ -81,5 +82,7 @@
         </div>
         <!-- Side widgets end -->
     </div>
+
+    <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
 </div>
 <!-- Page content end -->

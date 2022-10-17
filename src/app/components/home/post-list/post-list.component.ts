@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { PostService } from 'src/app/shared/services/post/post.service';
 import { Post } from '../../../shared/services/models/post';
 import { AuthService } from '../../../shared/services/auth/auth.service';
-
 @Component({
 	selector: 'app-post-list',
 	templateUrl: './post-list.component.html',
@@ -13,6 +12,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 })
 export class PostListComponent implements OnInit {
 	posts$!: Observable<Post[]>;
+	page: number = 1;
 
 	constructor(
 		private postService: PostService,
@@ -25,5 +25,9 @@ export class PostListComponent implements OnInit {
 
 	deletePost(postId: string) {
 		this.postService.deletePost(postId);
+	}
+
+	pageChanged(event: any) {
+		this.page = event;
 	}
 }

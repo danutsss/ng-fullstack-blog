@@ -16,7 +16,8 @@
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
                 </header>
                 <figure class="mb-4">
-                    <img class="img-fluid rounded" src="{{ post.backgroundImage }}" alt="{{ post.title }}" />
+                    <img *ngIf="post.backgroundImage" class="img-fluid rounded" src="{{ post.backgroundImage }}"
+                        alt="{{ post.title }}" />
                 </figure>
                 <!-- Post content-->
                 <section class="container mb-5 word-break" [innerHtml]="post.content"></section>

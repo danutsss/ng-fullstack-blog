@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 
 // Import Angular Firestore.
 import {
@@ -19,9 +19,10 @@ import { map } from 'rxjs/operators';
 export class PostService {
 	postsCollection: AngularFirestoreCollection<Post>;
 	postDoc!: AngularFirestoreDocument<Post>;
-	constructor(private afs: AngularFirestore, public ngZone: NgZone) {
+
+	constructor(private afs: AngularFirestore) {
 		this.postsCollection = this.afs.collection('posts', (ref) =>
-			ref.orderBy('published', 'desc')
+			ref.orderBy('published', 'desc').limit(5)
 		);
 	}
 
