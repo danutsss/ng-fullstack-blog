@@ -1,0 +1,41 @@
+<!-- Comments section start -->
+<section class="mb-5">
+    <div class="card bg-light">
+        <div class="card-body" *ngIf="comments$ | async as comments">
+
+            <div *ngIf="comments.length === 0" class="text-center mb-3">
+                Inca nu sunt comentarii la aceasta postare!
+            </div>
+
+            <!-- Single comment start -->
+            <div *ngFor="let comment of comments" class="d-flex mb-4">
+                <div class="flex-shrink-0">
+                    <app-avatar-photo></app-avatar-photo>
+                </div>
+                <div class="ms-3">
+                    <div>
+                        <span class="fw-bold">{{ comment.userName }}
+                            <span class="text-muted fw-normal fst-italic">
+                                &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}}
+                            </span>
+                        </span>
+                    </div>
+                    {{ comment.content }}
+                </div>
+
+                <div>
+                    <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
+                        (click)="deleteComment(comment.id!)">X</button>
+                </div>
+            </div>
+            <!-- Single comment end -->
+
+            <!-- Add comment start -->
+            <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
+                [(ngModel)]="comment"></textarea>
+            <button mat-raised-button color="primary" class="mt-2" type="submit" (click)="addComment()">Submit</button>
+            <!-- Add comment end -->
+        </div>
+    </div>
+</section>
+<!-- Comments section end -->
