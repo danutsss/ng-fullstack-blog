@@ -28,9 +28,18 @@
             <!-- Single comment end -->
 
             <!-- Add comment start -->
-            <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
-                [(ngModel)]="comment"></textarea>
-            <button mat-raised-button color="primary" class="mt-2" type="submit" (click)="addComment()">Submit</button>
+            <div *ngIf="authService.isLoggedIn">
+                <hr />
+                <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
+                    [(ngModel)]="comment"></textarea>
+                <button mat-raised-button color="primary" class="mt-2" type="submit"
+                    (click)="addComment()">Submit</button>
+            </div>
+
+            <div *ngIf="!authService.isLoggedIn" class="text-muted text-center">
+                <hr />
+                Pentru a putea lasa un comentariu trebuie sa fii logat!
+            </div>
             <!-- Add comment end -->
         </div>
     </div>
