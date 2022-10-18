@@ -24,9 +24,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { CreatePostDialogComponent } from './shared/components/create-post-dialog/create-post-dialog.component';
 
-// Import Comments component.
-import { CommentsComponent } from './shared/components/comments/comments.component';
-
 // Import Angular Material components.
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -56,7 +53,6 @@ Quill.register('modules/resize', QuillResizeModule);
 		HeaderComponent,
 		FooterComponent,
 		CreatePostDialogComponent,
-		CommentsComponent,
 	],
 	imports: [
 		BrowserModule,

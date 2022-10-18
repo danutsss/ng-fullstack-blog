@@ -16,6 +16,7 @@ import { MatDividerModule } from '@angular/material/divider';
 // Import components.
 import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
+import { CommentsComponent } from '../../shared/components/comments/comments.component';
 
 // Import post service.
 import { PostService } from 'src/app/shared/services/post/post.service';
@@ -43,6 +44,7 @@ const routes: Routes = [
 	declarations: [
 		PostListComponent,
 		PostDetailComponent,
+		CommentsComponent,
 		NoSanitizePipe,
 		TruncatePipe,
 	],
