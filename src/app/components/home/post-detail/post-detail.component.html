@@ -10,7 +10,8 @@
                     <h1 class="fw-bolder mb-1" style="word-break: break-all;">{{ post.title }}</h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Postat de: {{ post.author }} &bull; {{
-                        post.published.toDate() | date: 'mediumDate' }}</div>
+                        post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
+                        'shortTime' }} </div>
                     <!-- Post categories-->
                     <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->

@@ -12,8 +12,9 @@
                         *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: page, totalItems: posts.length }">
                         <mat-card class="mb-4">
                             <mat-card-title>{{ post.title | truncatePipe:35:'...' }}</mat-card-title>
-                            <mat-card-subtitle>Postat de: {{ post.author }} &bull; la data de:
-                                {{ post.published.toDate() | date: 'mediumDate' }}</mat-card-subtitle>
+                            <mat-card-subtitle>Postat de: {{ post.author }} &bull;
+                                {{ post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
+                                'shortTime' }} </mat-card-subtitle>
                             <mat-card-content>
                                 <p class="card-text" [innerHtml]="post.content | truncatePipe:85:'...'"></p>
                             </mat-card-content>
