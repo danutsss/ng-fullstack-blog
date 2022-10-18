@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { CommentsService } from '../../services/comments/comments.service';
 
 @Component({
 	selector: 'app-avatar-photo',
@@ -6,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./avatar-photo.component.scss'],
 })
 export class AvatarPhotoComponent implements OnInit {
+	@Input() public name!: string;
 	public showInitials: boolean = true;
 	public initials!: string;
 	public circleColor!: string;
@@ -23,7 +26,7 @@ export class AvatarPhotoComponent implements OnInit {
 		'#CDDC39',
 		'#FFEB3B',
 	];
-	constructor() {}
+	constructor(private commentService: CommentsService) {}
 
 	ngOnInit(): void {
 		this.createInitials();
@@ -34,15 +37,13 @@ export class AvatarPhotoComponent implements OnInit {
 	}
 
 	private createInitials(): void {
-		const name = JSON.parse(localStorage.getItem('loggedUser')!) as any;
-		const displayName = name.displayName;
 		let initials = '';
 
-		for (let i = 0; i < displayName.length; i++) {
-			if (displayName.charAt(i) === ' ') continue;
+		for (let i = 0; i < this.name.length; i++) {
+			if (this.name.charAt(i) === ' ') continue;
 
-			if (displayName.charAt(i) === displayName.charAt(i).toUpperCase()) {
-				initials += displayName.charAt(i);
+			if (this.name.charAt(i) === this.name.charAt(i).toUpperCase()) {
+				initials += this.name.charAt(i);
 
 				if (initials.length == 2) break;
 			}
