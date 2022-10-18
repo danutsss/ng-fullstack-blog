@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { CommentsService } from '../../services/comments/comments.service';
-
 @Component({
 	selector: 'app-avatar-photo',
 	templateUrl: './avatar-photo.component.html',
@@ -26,7 +24,7 @@ export class AvatarPhotoComponent implements OnInit {
 		'#CDDC39',
 		'#FFEB3B',
 	];
-	constructor(private commentService: CommentsService) {}
+	constructor() {}
 
 	ngOnInit(): void {
 		this.createInitials();
