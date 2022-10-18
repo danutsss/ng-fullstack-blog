@@ -1,1 +1,30 @@
-<p>comments works!</p>
+<!-- Comments section start -->
+<section class="mb-5">
+    <div class="card bg-light">
+        <div class="card-body" *ngIf="comments$ | async as comments">
+            <!-- Single comment start -->
+            <div *ngFor="let comment of comments" class="d-flex mb-4">
+                <div class="flex-shrink-0"><img class="rounded-circle"
+                        src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                <div class="ms-3">
+                    <div class="fw-bold">{{ comment.userName }}
+                        <span class="text-muted fw-normal fst-italic">&bull; {{ comment.createdAt.toDate() | date:
+                            "mediumDate"
+                            }}</span>
+                    </div>
+                    {{ comment.content }}
+                </div>
+            </div>
+            <!-- Single comment end -->
+
+            <!-- Add comment start -->
+            <div>
+                <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
+                    [(ngModel)]="comment"></textarea>
+                <button class="btn btn-primary mt-2" type="submit" (click)="addComment()">Submit</button>
+            </div>
+            <!-- Add comment end -->
+        </div>
+    </div>
+</section>
+<!-- Comments section end -->
