@@ -35,49 +35,37 @@
         <!-- Side widgets start -->
         <div class="col-lg-4">
             <!-- Search widget start -->
-            <div class="card mb-4">
-                <div class="card-header">Cautare</div>
-                <div class="card-body">
+            <mat-card class="mb-4">
+                <mat-card-title>Cautare</mat-card-title>
+                <hr />
+                <mat-card-content>
                     <div class="input-group">
                         <input class="form-control" type="text" placeholder="Introduceti termenul de cautare..."
                             aria-label="Introduceti termenul de cautare..." aria-describedby="button-search" />
                         <button mat-flat-button color="primary" id="button-search" type="button">Go!</button>
                     </div>
-                </div>
-            </div>
+                </mat-card-content>
+            </mat-card>
             <!-- Search widget end -->
 
             <!-- Categories widget start -->
-            <div class="card mb-4">
-                <div class="card-header">Categories</div>
-                <div class="card-body">
+            <mat-card>
+                <mat-card-title>Categorii</mat-card-title>
+                <hr />
+                <mat-card-content>
                     <div class="row">
-                        <mat-chip-list class="example-chip" cdkDropList cdkDropListOrientation="horizontal">
-                            <mat-chip class="example-box" cdkDrag>
-                                Web design
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                Freebies
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                Bootstrap
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                HTML & CSS
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                Angular
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                Vue
-                            </mat-chip>
-                            <mat-chip class="example-box" cdkDrag>
-                                React
-                            </mat-chip>
+                        <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
+                            <mat-chip cdkDrag>Web design</mat-chip>
+                            <mat-chip cdkDrag>Freebies</mat-chip>
+                            <mat-chip cdkDrag>Bootstrap</mat-chip>
+                            <mat-chip cdkDrag>HTML & CSS</mat-chip>
+                            <mat-chip cdkDrag>Angular</mat-chip>
+                            <mat-chip cdkDrag>Vue</mat-chip>
+                            <mat-chip cdkDrag>React</mat-chip>
                         </mat-chip-list>
                     </div>
-                </div>
-            </div>
+                </mat-card-content>
+            </mat-card>
             <!-- Categories widget end -->
         </div>
         <!-- Side widgets end -->
