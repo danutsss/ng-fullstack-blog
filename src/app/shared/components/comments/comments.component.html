@@ -13,16 +13,16 @@
                     <div>
                         <span class="fw-bold">{{ comment.userName }}
                             <span class="text-muted fw-normal fst-italic">
-                                &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}}
+                                &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}} at {{
+                                comment.createdAt.toDate() | date: "shortTime"}} &bull;
+                            </span>
+                            <span (click)="deleteComment(comment.id!)"
+                                class="delete-comment text-danger fw-normal fst-italic">
+                                [sterge]
                             </span>
                         </span>
                     </div>
                     {{ comment.content }}
-                </div>
-
-                <div>
-                    <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
-                        (click)="deleteComment(comment.id!)">X</button>
                 </div>
             </div>
             <!-- Single comment end -->
