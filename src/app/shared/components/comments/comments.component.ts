@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 // Import Comments service.
 import { CommentsService } from '../../services/comments/comments.service';
 
+// Import Auth service.
+import { AuthService } from '../../services/auth/auth.service';
+
 // Import Comments model.
 import { Comment } from '../../services/models/comments';
 
@@ -19,7 +22,8 @@ export class CommentsComponent implements OnInit {
 
 	constructor(
 		private commentService: CommentsService,
-		private route: ActivatedRoute
+		private route: ActivatedRoute,
+		public authService: AuthService
 	) {}
 
 	ngOnInit(): void {
@@ -34,6 +38,7 @@ export class CommentsComponent implements OnInit {
 			postId: postId,
 			createdAt: new Date(),
 			userName: userName['displayName'],
+			authorId: userName['uid'],
 		};
 		this.commentService.createComment(commentData);
 		this.comment = '';
@@ -42,5 +47,9 @@ export class CommentsComponent implements OnInit {
 	getComments() {
 		const postId = this.route.snapshot.paramMap.get('id') as string;
 		return this.commentService.getPostComments(postId);
+	}
+
+	deleteComment(commentId: string) {
+		this.commentService.deleteComment(commentId);
 	}
 }
