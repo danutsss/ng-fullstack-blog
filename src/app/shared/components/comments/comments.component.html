@@ -8,7 +8,10 @@
             </div>
 
             <!-- Single comment start -->
-            <div *ngFor="let comment of comments" class="d-flex mb-4 justify-content-between">
+            <div *ngFor="let comment of comments" class="d-flex mb-4">
+                <div class="flex-shrink-0">
+                    <app-avatar-photo></app-avatar-photo>
+                </div>
                 <div class="ms-3">
                     <div>
                         <span class="fw-bold">{{ comment.userName }}
