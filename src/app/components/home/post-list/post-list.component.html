@@ -1,7 +1,5 @@
-<!-- Page content start -->
 <div class="container">
     <div class="row">
-        <!-- Blog entries start -->
         <div class="col-lg-8">
             <div class="text-center mt-4 mb-4">
                 <h1 class="fw-bolder">Ultimele postari</h1>
@@ -34,11 +32,8 @@
                 <div *ngIf="posts.length === 0" class="text-center">Inca nu exista postari!</div>
             </div>
         </div>
-        <!-- Blog entries end -->
 
-        <!-- Side widgets start -->
         <div class="col-lg-4">
-            <!-- Search widget start -->
             <mat-card class="mb-4">
                 <mat-card-title>Cautare</mat-card-title>
                 <hr />
@@ -50,11 +45,9 @@
                     </div>
                 </mat-card-content>
             </mat-card>
-            <!-- Search widget end -->
 
             <app-categories></app-categories>
         </div>
-        <!-- Side widgets end -->
         <div class="col-lg-8 mt-4">
             <pagination-controls align="center" (pageChange)="pageChanged($event)"
                 (pageBoundsCorrection)="pageChanged($event)" [maxSize]="9" [directionLinks]="true"
@@ -63,4 +56,3 @@
         </div>
     </div>
 </div>
-<!-- Page content end -->

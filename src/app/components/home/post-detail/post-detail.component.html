@@ -1,44 +1,33 @@
-<!-- Page content start -->
 <div *ngIf="post" class="container mt-4 mb-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <!-- Post content start -->
             <article>
-                <!-- Post header start -->
                 <header class="mb-4">
-                    <!-- Post title start -->
                     <h1 class="fw-bolder mb-1" style="word-break: break-all;">{{ post.title }}</h1>
-                    <!-- Post title end -->
 
-                    <!-- Post meta content start -->
                     <div class="text-muted fst-italic mb-2">Postat de: {{ post.author }} &bull; {{
                         post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                         'shortTime' }} </div>
-                    <!-- Post meta content end -->
                 </header>
-                <!-- Post header end -->
 
                 <figure class="mb-4">
                     <img *ngIf="post.backgroundImage" class="img-fluid rounded" src="{{ post.backgroundImage }}"
                         alt="{{ post.title }}" />
                 </figure>
 
-                <!-- Post content start -->
                 <section class="container mb-5 word-break" [innerHtml]="post.content"></section>
-                <!-- Post content end -->
             </article>
-            <!-- Post content end -->
+
             <app-comments></app-comments>
         </div>
 
-        <!-- Side widgets start -->
         <div class="col-lg-4">
-            <!-- Categories widget start -->
             <mat-card>
                 <mat-card-title>Categorii</mat-card-title>
+
                 <hr />
+
                 <mat-card-content>
-                    <!-- Post categories start -->
                     <mat-chip-list class="d-inline-block m-1" cdkDropList cdkDropListOrientation="horizontal" *ngFor="let category of
                                         post.categories" aria-label="Post categories">
                         <mat-chip cdkDrag>{{ category }}</mat-chip>
@@ -47,12 +36,8 @@
                     <div class="text-center">
                         <span *ngIf="!post.categories">Aceasta postare nu are categorii!</span>
                     </div>
-                    <!-- Post categories end -->
                 </mat-card-content>
             </mat-card>
-            <!-- Categories widget end -->
         </div>
-        <!-- Side widgets end -->
     </div>
 </div>
-<!-- Page content end -->

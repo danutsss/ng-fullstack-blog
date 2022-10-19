@@ -69,7 +69,6 @@ export class CreatePostDialogComponent implements OnInit {
 		} else {
 			// observe percentage changes
 			this.uploadPercent = task.percentageChanges() as Observable<number>;
-			console.log('image uploaded.');
 			// get notified when the download URL is available
 			task.snapshotChanges()
 				.pipe(
