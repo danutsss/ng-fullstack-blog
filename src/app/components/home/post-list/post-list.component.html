@@ -57,16 +57,13 @@
                 <mat-card-title>Categorii</mat-card-title>
                 <hr />
                 <mat-card-content>
-                    <div class="row">
-                        <mat-chip-list cdkDropList cdkDropListOrientation="horizontal">
-                            <mat-chip cdkDrag>Web design</mat-chip>
-                            <mat-chip cdkDrag>Freebies</mat-chip>
-                            <mat-chip cdkDrag>Bootstrap</mat-chip>
-                            <mat-chip cdkDrag>HTML & CSS</mat-chip>
-                            <mat-chip cdkDrag>Angular</mat-chip>
-                            <mat-chip cdkDrag>Vue</mat-chip>
-                            <mat-chip cdkDrag>React</mat-chip>
-                        </mat-chip-list>
+                    <div class="row" *ngIf="posts$ | async as posts">
+                        <div *ngFor="let post of posts">
+                            <mat-chip-list class="d-inline-block m-1" *ngFor="let category of
+                        post.categories" cdkDropList cdkDropListOrientation="horizontal">
+                                <mat-chip cdkDrag>{{ category }} </mat-chip>
+                            </mat-chip-list>
+                        </div>
                     </div>
                 </mat-card-content>
             </mat-card>

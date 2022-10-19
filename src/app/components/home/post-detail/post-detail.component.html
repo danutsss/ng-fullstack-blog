@@ -15,16 +15,6 @@
                         post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                         'shortTime' }} </div>
                     <!-- Post meta content end -->
-
-                    <!-- Post categories start -->
-                    <div>
-                        <mat-chip-list class="d-inline-block m-1" cdkDropList cdkDropListOrientation="horizontal"
-                            *ngFor="let category of
-                    post.categories" aria-label="Post categories">
-                            <mat-chip cdkDrag>{{ category }}</mat-chip>
-                        </mat-chip-list>
-                    </div>
-                    <!-- Post categories end -->
                 </header>
                 <!-- Post header end -->
 
@@ -40,6 +30,43 @@
             <!-- Post content end -->
             <app-comments></app-comments>
         </div>
+
+        <!-- Side widgets start -->
+        <div class="col-lg-4">
+            <!-- Search widget start -->
+            <mat-card class="mb-4">
+                <mat-card-title>Cautare</mat-card-title>
+                <hr />
+                <mat-card-content>
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Introduceti termenul de cautare..."
+                            aria-label="Introduceti termenul de cautare..." aria-describedby="button-search" />
+                        <button mat-flat-button color="primary" id="button-search" type="button">Go!</button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <!-- Search widget end -->
+
+            <!-- Categories widget start -->
+            <mat-card>
+                <mat-card-title>Categorii</mat-card-title>
+                <hr />
+                <mat-card-content>
+                    <!-- Post categories start -->
+                    <mat-chip-list class="d-inline-block m-1" cdkDropList cdkDropListOrientation="horizontal" *ngFor="let category of
+                                        post.categories" aria-label="Post categories">
+                        <mat-chip cdkDrag>{{ category }}</mat-chip>
+                    </mat-chip-list>
+
+                    <div class="text-center">
+                        <span *ngIf="!post.categories">Aceasta postare nu are categorii!</span>
+                    </div>
+                    <!-- Post categories end -->
+                </mat-card-content>
+            </mat-card>
+            <!-- Categories widget end -->
+        </div>
+        <!-- Side widgets end -->
     </div>
 </div>
 <!-- Page content end -->
