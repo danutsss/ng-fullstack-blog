@@ -16,24 +16,33 @@
                     <div>
                         <span class="fw-bold">{{ comment.userName }}
                             <span class="text-muted fw-normal fst-italic">
-                                &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}}
+                                &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}} at {{
+                                comment.createdAt.toDate() | date: "shortTime"}} &bull;
+                            </span>
+                            <span (click)="deleteComment(comment.id!)"
+                                class="delete-comment text-danger fw-normal fst-italic">
+                                [sterge]
                             </span>
                         </span>
                     </div>
                     {{ comment.content }}
                 </div>
-
-                <div>
-                    <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
-                        (click)="deleteComment(comment.id!)">X</button>
-                </div>
             </div>
             <!-- Single comment end -->
 
             <!-- Add comment start -->
-            <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
-                [(ngModel)]="comment"></textarea>
-            <button mat-raised-button color="primary" class="mt-2" type="submit" (click)="addComment()">Submit</button>
+            <div *ngIf="authService.isLoggedIn">
+                <hr />
+                <textarea class="form-control" rows="3" placeholder="Lasa un comentariu aici..."
+                    [(ngModel)]="comment"></textarea>
+                <button mat-raised-button color="primary" class="mt-2" type="submit"
+                    (click)="addComment()">Submit</button>
+            </div>
+
+            <div *ngIf="!authService.isLoggedIn" class="text-muted text-center">
+                <hr />
+                Pentru a putea lasa un comentariu trebuie sa fii logat!
+            </div>
             <!-- Add comment end -->
         </div>
     </div>

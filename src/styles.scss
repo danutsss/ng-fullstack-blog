@@ -42,3 +42,9 @@ body {
 		letter-spacing: 0.2625px;
 	}
 }
+
+.delete-comment {
+	&:hover {
+		cursor: pointer;
+	}
+}
