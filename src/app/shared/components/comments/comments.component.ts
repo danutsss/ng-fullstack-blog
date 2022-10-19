@@ -52,4 +52,9 @@ export class CommentsComponent implements OnInit {
 	deleteComment(commentId: string) {
 		this.commentService.deleteComment(commentId);
 	}
+
+	userIsAuthor(authorId: string) {
+		const user = JSON.parse(localStorage.getItem('loggedUser')!) as any;
+		return user['uid'] === authorId;
+	}
 }

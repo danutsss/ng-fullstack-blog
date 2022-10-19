@@ -1,8 +1,7 @@
 <!-- Comments section start -->
 <section class="mb-5">
-    <div class="card bg-light">
-        <div class="card-body" *ngIf="comments$ | async as comments">
-
+    <mat-card>
+        <mat-card-content *ngIf="comments$ | async as comments">
             <div *ngIf="comments.length === 0" class="text-center mb-3">
                 Inca nu sunt comentarii la aceasta postare!
             </div>
@@ -12,16 +11,18 @@
                 <div class="flex-shrink-0">
                     <app-avatar-photo [name]="comment.userName"></app-avatar-photo>
                 </div>
+
                 <div class="ms-3">
                     <div>
                         <span class="fw-bold">{{ comment.userName }}
                             <span class="text-muted fw-normal fst-italic">
                                 &bull; {{ comment.createdAt.toDate() | date: "mediumDate"}} at {{
-                                comment.createdAt.toDate() | date: "shortTime"}} &bull;
+                                comment.createdAt.toDate() | date: "shortTime"}}
                             </span>
                             <span (click)="deleteComment(comment.id!)"
+                                *ngIf="authService.isLoggedIn && userIsAuthor(comment.authorId) || authService.isAdmin"
                                 class="delete-comment text-danger fw-normal fst-italic">
-                                [sterge]
+                                <span class="text-muted">&bull;</span> [sterge]
                             </span>
                         </span>
                     </div>
@@ -44,7 +45,7 @@
                 Pentru a putea lasa un comentariu trebuie sa fii logat!
             </div>
             <!-- Add comment end -->
-        </div>
-    </div>
+        </mat-card-content>
+    </mat-card>
 </section>
 <!-- Comments section end -->
