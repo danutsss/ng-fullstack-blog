@@ -21,8 +21,9 @@ export class CreatePostDialogComponent implements OnInit {
 	content: string = '';
 	image: string = '';
 	title: string = '';
+	categories: string = '';
 
-	saving = 'Creeaza postare';
+	saving: string = 'Creeaza postare';
 
 	downloadURL!: Observable<string>;
 	uploadPercent?: Observable<number>;
@@ -37,11 +38,7 @@ export class CreatePostDialogComponent implements OnInit {
 	ngOnInit(): void {}
 
 	createPost() {
-		const newSlug = this.title
-			.toLowerCase()
-			.replace(/ /g, '-')
-			.replace(/[^\w-]+/g, '');
-
+		const categories = this.categories.split(',');
 		const postData = {
 			content: this.content,
 			backgroundImage: this.image || '',
@@ -49,12 +46,13 @@ export class CreatePostDialogComponent implements OnInit {
 			author: this.auth.userData.displayName || this.auth.userData.email,
 			authorId: this.auth.userData.uid,
 			published: new Date(),
-			slug: newSlug,
+			categories: categories,
 		};
 		this.postService.createPost(postData);
 		this.title = '';
 		this.content = '';
 		this.image = '';
+		this.categories = '';
 
 		this.saving = 'Postarea a fost salvata.';
 		setTimeout(() => (this.saving = 'Creeaza postare'), 3000);

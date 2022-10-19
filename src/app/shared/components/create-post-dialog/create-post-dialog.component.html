@@ -6,10 +6,20 @@
         </button>
     </div>
 
-    <mat-form-field appearance="outline" [style.width.px]="600" class="mb-4">
-        <mat-label>titlu postare</mat-label>
-        <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
-    </mat-form-field>
+    <div>
+        <mat-form-field appearance="outline" [style.width.px]="600">
+            <mat-label>titlu postare</mat-label>
+            <input matInput placeholder="titlu postare" [(ngModel)]="title" name="title" />
+        </mat-form-field>
+    </div>
+
+    <div class="mb-4">
+        <mat-form-field appearance="outline" [style.width.px]="600">
+            <mat-label>categorii</mat-label>
+            <input matInput placeholder="categorii" [(ngModel)]="categories" name="categories" />
+            <mat-hint>categoriile trebuie separate prin virgula</mat-hint>
+        </mat-form-field>
+    </div>
 
     <div class="mb-4">
         <input type="file" id="file" #postImage (change)="uploadImage($event)" name="postImage" autocomplete="off" />

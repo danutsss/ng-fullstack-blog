@@ -6,5 +6,5 @@ export interface Post {
 	author: string;
 	authorId: string;
 	published: any;
-	slug: string;
+	categories: any;
 }

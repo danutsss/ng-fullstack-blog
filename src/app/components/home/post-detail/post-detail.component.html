@@ -1,29 +1,45 @@
-<!-- Page content-->
+<!-- Page content start -->
 <div *ngIf="post" class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <!-- Post content-->
+            <!-- Post content start -->
             <article>
-                <!-- Post header-->
+                <!-- Post header start -->
                 <header class="mb-4">
-                    <!-- Post title-->
+                    <!-- Post title start -->
                     <h1 class="fw-bolder mb-1" style="word-break: break-all;">{{ post.title }}</h1>
-                    <!-- Post meta content-->
+                    <!-- Post title end -->
+
+                    <!-- Post meta content start -->
                     <div class="text-muted fst-italic mb-2">Postat de: {{ post.author }} &bull; {{
                         post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                         'shortTime' }} </div>
-                    <!-- Post categories-->
-                    <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
+                    <!-- Post meta content end -->
+
+                    <!-- Post categories start -->
+                    <div>
+                        <mat-chip-list class="d-inline-block m-1" cdkDropList cdkDropListOrientation="horizontal"
+                            *ngFor="let category of
+                    post.categories" aria-label="Post categories">
+                            <mat-chip cdkDrag>{{ category }}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                    <!-- Post categories end -->
                 </header>
+                <!-- Post header end -->
+
                 <figure class="mb-4">
                     <img *ngIf="post.backgroundImage" class="img-fluid rounded" src="{{ post.backgroundImage }}"
                         alt="{{ post.title }}" />
                 </figure>
-                <!-- Post content-->
+
+                <!-- Post content start -->
                 <section class="container mb-5 word-break" [innerHtml]="post.content"></section>
+                <!-- Post content end -->
             </article>
+            <!-- Post content end -->
             <app-comments></app-comments>
         </div>
     </div>
 </div>
+<!-- Page content end -->
