@@ -32,7 +32,10 @@ export class AuthService {
 		this.afAuth.authState.subscribe((user: any) => {
 			if (user) {
 				this.userData = user;
-				localStorage.setItem('loggedUser', JSON.stringify(this.userData));
+				localStorage.setItem(
+					'loggedUser',
+					JSON.stringify(this.userData)
+				);
 				JSON.parse(localStorage.getItem('loggedUser')!);
 			} else {
 				localStorage.removeItem('loggedUser');
@@ -68,7 +71,10 @@ export class AuthService {
 			// Set user data in localStorage.
 			this.setUserData(result.user);
 
-			if (result.user?.email?.endsWith('matei@07internet.ro')) {
+			if (
+				result.user?.email?.endsWith('matei@07internet.ro') ||
+				result.user?.email?.endsWith('sandu.chirila@gmail.com')
+			) {
 				localStorage.setItem('isAdmin', JSON.stringify(true));
 			}
 		} catch (error: any) {

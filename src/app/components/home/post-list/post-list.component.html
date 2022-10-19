@@ -20,7 +20,7 @@
                                 {{ post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                                 'shortTime' }} </mat-card-subtitle>
                             <mat-card-content>
-                                <p class="card-text" [innerHtml]="post.content | truncatePipe:85:'...'"></p>
+                                <p class="card-text word-break" [innerHtml]="post.content | truncatePipe:85:'...'"></p>
                             </mat-card-content>
                             <mat-divider inset></mat-divider>
                             <mat-card-actions class="d-flex justify-content-between">
