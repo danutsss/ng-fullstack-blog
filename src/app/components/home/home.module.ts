@@ -18,6 +18,7 @@ import { PostListComponent } from './post-list/post-list.component';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 import { CommentsComponent } from '../../shared/components/comments/comments.component';
 import { AvatarPhotoComponent } from 'src/app/shared/components/avatar-photo/avatar-photo.component';
+import { CategoriesComponent } from 'src/app/shared/components/categories/categories.component';
 
 // Import post service.
 import { PostService } from 'src/app/shared/services/post/post.service';
@@ -47,6 +48,7 @@ const routes: Routes = [
 		PostDetailComponent,
 		CommentsComponent,
 		AvatarPhotoComponent,
+		CategoriesComponent,
 		NoSanitizePipe,
 		TruncatePipe,
 	],
