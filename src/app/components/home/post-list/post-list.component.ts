@@ -12,6 +12,7 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 })
 export class PostListComponent implements OnInit {
 	posts$!: Observable<Post[]>;
+	categories$: string[] = [];
 	page: number = 1;
 
 	constructor(
@@ -29,5 +30,11 @@ export class PostListComponent implements OnInit {
 
 	pageChanged(event: any) {
 		this.page = event;
+	}
+
+	getCategories() {
+		this.postService.getCategories().subscribe((categories) => {
+			this.categories$ = categories;
+		});
 	}
 }

@@ -1,29 +1,43 @@
-<!-- Page content-->
-<div *ngIf="post" class="container mt-5">
+<div *ngIf="post" class="container mt-4 mb-4">
     <div class="row justify-content-center">
         <div class="col-lg-8">
-            <!-- Post content-->
             <article>
-                <!-- Post header-->
                 <header class="mb-4">
-                    <!-- Post title-->
                     <h1 class="fw-bolder mb-1" style="word-break: break-all;">{{ post.title }}</h1>
-                    <!-- Post meta content-->
+
                     <div class="text-muted fst-italic mb-2">Postat de: {{ post.author }} &bull; {{
                         post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                         'shortTime' }} </div>
-                    <!-- Post categories-->
-                    <!-- <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
-                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a> -->
                 </header>
+
                 <figure class="mb-4">
                     <img *ngIf="post.backgroundImage" class="img-fluid rounded" src="{{ post.backgroundImage }}"
                         alt="{{ post.title }}" />
                 </figure>
-                <!-- Post content-->
+
                 <section class="container mb-5 word-break" [innerHtml]="post.content"></section>
             </article>
+
             <app-comments></app-comments>
+        </div>
+
+        <div class="col-lg-4">
+            <mat-card>
+                <mat-card-title>Categorii</mat-card-title>
+
+                <hr />
+
+                <mat-card-content>
+                    <mat-chip-list class="d-inline-block m-1" cdkDropList cdkDropListOrientation="horizontal" *ngFor="let category of
+                                        post.categories" aria-label="Post categories">
+                        <mat-chip cdkDrag>{{ category }}</mat-chip>
+                    </mat-chip-list>
+
+                    <div class="text-center">
+                        <span *ngIf="!post.categories">Aceasta postare nu are categorii!</span>
+                    </div>
+                </mat-card-content>
+            </mat-card>
         </div>
     </div>
 </div>

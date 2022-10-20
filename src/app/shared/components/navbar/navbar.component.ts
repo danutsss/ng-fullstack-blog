@@ -54,7 +54,6 @@ export class NavbarComponent implements OnInit {
 		});
 
 		this.dialogRef.afterClosed().subscribe((result: any) => {
-			console.log('The dialog was closed');
 			this.isDialogOpened = false;
 		});
 	}

@@ -1,3 +1,21 @@
 ::ng-deep .ql-editor {
 	word-break: break-all !important;
 }
+
+.title_field {
+	width: 600px;
+}
+
+.category_field {
+	width: 600px;
+}
+
+@media (max-width: 800px) {
+	.title_field {
+		width: 100%;
+	}
+
+	.category_field {
+		width: 100%;
+	}
+}

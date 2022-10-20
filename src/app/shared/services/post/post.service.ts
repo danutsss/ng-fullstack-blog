@@ -59,6 +59,23 @@ export class PostService {
 	}
 
 	/**
+	 * Get categories from posts.
+	 */
+	getCategories() {
+		return this.afs
+			.collection('posts', (ref) => ref.orderBy('published', 'desc'))
+			.valueChanges()
+			.pipe(
+				map((actions: any) =>
+					actions.map((a: any) => {
+						const data = a.categories;
+						return data;
+					})
+				)
+			);
+	}
+
+	/**
 	 * Create new post.
 	 * @param data - Post data.
 	 */
