@@ -1,8 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 // Inject Auth service.
 import { AuthService } from './shared/services/auth/auth.service';
+
+// Inject rxjs BehaviorSubject.
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
 	selector: 'app-root',
@@ -11,7 +15,16 @@ import { AuthService } from './shared/services/auth/auth.service';
 })
 export class AppComponent {
 	title: string = "Blogu' lui Qirila";
-	constructor(public authService: AuthService, private router: Router) {}
+
+	static isBrowser = new BehaviorSubject<boolean>(false);
+
+	constructor(
+		public authService: AuthService,
+		private router: Router,
+		@Inject(PLATFORM_ID) private platformId: any
+	) {
+		AppComponent.isBrowser.next(isPlatformBrowser(platformId));
+	}
 
 	isDashboardRoute() {
 		return this.router.url === '/dashboard';
