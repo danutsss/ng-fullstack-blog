@@ -15,7 +15,7 @@
                         alt="{{ post.title }}" />
                 </figure>
 
-                <section class="container mb-5 word-break" [innerHtml]="post.content"></section>
+                <section class="container mb-5 word-break" [innerHtml]="post.content | noSanitize"></section>
             </article>
 
             <app-comments></app-comments>
