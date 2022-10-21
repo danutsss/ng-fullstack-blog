@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 // User model.
 import { User } from '../models/user';
 
+// Import localStorage service for SSR.
+import { LocalstorageService } from '../localstorage/localstorage.service';
+
 @Injectable({
 	providedIn: 'root',
 })
@@ -23,7 +26,8 @@ export class AuthService {
 		public ngZone: NgZone, // Inject NgZone to remove outside scope warning.
 		public afStore: AngularFirestore, // Inject Firestore service.
 		public afAuth: AngularFireAuth, // Inject Firebase Auth service.
-		public router: Router // Inject Angular router service.
+		public router: Router, // Inject Angular router service.
+		public localStorage: LocalstorageService // Inject localstorage service.
 	) {
 		/**
 		 * Saving user data into localStorage when
@@ -32,13 +36,13 @@ export class AuthService {
 		this.afAuth.authState.subscribe((user: any) => {
 			if (user) {
 				this.userData = user;
-				localStorage.setItem(
+				this.localStorage.setItem(
 					'loggedUser',
 					JSON.stringify(this.userData)
 				);
-				JSON.parse(localStorage.getItem('loggedUser')!);
+				JSON.parse(this.localStorage.getItem('loggedUser')!);
 			} else {
-				localStorage.removeItem('loggedUser');
+				this.localStorage.removeItem('loggedUser');
 			}
 		});
 	}
@@ -47,7 +51,7 @@ export class AuthService {
 	 * Returns true when user is logged in and email is verified.
 	 */
 	get isLoggedIn(): boolean {
-		const user = JSON.parse(localStorage.getItem('loggedUser')!);
+		const user = JSON.parse(this.localStorage.getItem('loggedUser')!);
 		return user !== null && user.emailVerified !== false ? true : false;
 	}
 
@@ -55,7 +59,7 @@ export class AuthService {
 	 * Returns true when user is admin.
 	 */
 	get isAdmin(): boolean {
-		const user = JSON.parse(localStorage.getItem('isAdmin')!);
+		const user = JSON.parse(this.localStorage.getItem('isAdmin')!);
 		return user !== null && user === true ? true : false;
 	}
 
@@ -75,7 +79,7 @@ export class AuthService {
 				result.user?.email?.endsWith('matei@07internet.ro') ||
 				result.user?.email?.endsWith('sandu.chirila@gmail.com')
 			) {
-				localStorage.setItem('isAdmin', JSON.stringify(true));
+				this.localStorage.setItem('isAdmin', JSON.stringify(true));
 			}
 		} catch (error: any) {
 			alert(error.message);
@@ -95,8 +99,8 @@ export class AuthService {
 	 */
 	async signOut() {
 		await this.afAuth.signOut();
-		localStorage.removeItem('loggedUser');
-		localStorage.removeItem('isAdmin');
+		this.localStorage.removeItem('loggedUser');
+		this.localStorage.removeItem('isAdmin');
 		this.router.navigate(['']);
 	}
 
