@@ -11,6 +11,9 @@ import { AuthService } from '../../services/auth/auth.service';
 // Import Comments model.
 import { Comment } from '../../services/models/comments';
 
+// Import local storage service.
+import { LocalstorageService } from '../../services/localstorage/localstorage.service';
+
 @Component({
 	selector: 'app-comments',
 	templateUrl: './comments.component.html',
@@ -23,7 +26,8 @@ export class CommentsComponent implements OnInit {
 	constructor(
 		private commentService: CommentsService,
 		private route: ActivatedRoute,
-		public authService: AuthService
+		public authService: AuthService,
+		private localStorageService: LocalstorageService
 	) {}
 
 	ngOnInit(): void {
@@ -32,7 +36,9 @@ export class CommentsComponent implements OnInit {
 
 	addComment() {
 		const postId = this.route.snapshot.paramMap.get('id') as string;
-		const userName = JSON.parse(localStorage.getItem('loggedUser')!) as any;
+		const userName = JSON.parse(
+			this.localStorageService.getItem('loggedUser')!
+		) as any;
 		const commentData = {
 			content: this.comment,
 			postId: postId,
@@ -54,7 +60,9 @@ export class CommentsComponent implements OnInit {
 	}
 
 	userIsAuthor(authorId: string) {
-		const user = JSON.parse(localStorage.getItem('loggedUser')!) as any;
+		const user = JSON.parse(
+			this.localStorageService.getItem('loggedUser')!
+		) as any;
 		return user['uid'] === authorId;
 	}
 }
