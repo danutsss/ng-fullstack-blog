@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Import Authentification service.
@@ -27,19 +27,6 @@ export class NavbarComponent implements OnInit {
 	) {}
 
 	ngOnInit(): void {}
-
-	@HostListener('window:scroll', ['$event'])
-	onPageScroll = () => {
-		let element = document.querySelector('.navbar') as HTMLElement;
-
-		if (window.pageYOffset > element.clientHeight) {
-			element.classList.add('navbar-inverse');
-			element.classList.add('mat-elevation-z8');
-		} else {
-			element.classList.remove('navbar-inverse');
-			element.classList.remove('mat-elevation-z8');
-		}
-	};
 
 	openDialog() {
 		if (this.isDialogOpened) {
