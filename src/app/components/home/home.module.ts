@@ -26,6 +26,7 @@ import { PostService } from 'src/app/shared/services/post/post.service';
 // Import custom pipes.
 import { NoSanitizePipe } from 'src/app/shared/util/nosanitizer.pipe';
 import { TruncatePipe } from 'src/app/shared/util/truncate.pipe';
+import { SlugPipe } from 'src/app/shared/util/slug.pipe';
 
 // Import Ngx Pagination module.
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -37,7 +38,7 @@ const routes: Routes = [
 		component: PostListComponent,
 	},
 	{
-		path: 'blog/:id',
+		path: 'blog/:id/:slug',
 		component: PostDetailComponent,
 	},
 ];
@@ -51,6 +52,7 @@ const routes: Routes = [
 		CategoriesComponent,
 		NoSanitizePipe,
 		TruncatePipe,
+		SlugPipe,
 	],
 	imports: [
 		CommonModule,

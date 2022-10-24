@@ -39,11 +39,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 // Import Quill Module.
 import { QuillModule } from 'ngx-quill';
-import Quill from 'quill';
-import QuillResizeModule from '@botom/quill-resize-module';
-
-// Register the Quill Resize Module.
-Quill.register('modules/resize', QuillResizeModule);
 
 @NgModule({
 	declarations: [
@@ -55,7 +50,7 @@ Quill.register('modules/resize', QuillResizeModule);
 		CreatePostDialogComponent,
 	],
 	imports: [
-		BrowserModule,
+		BrowserModule.withServerTransition({ appId: 'serverApp' }),
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,
@@ -73,13 +68,7 @@ Quill.register('modules/resize', QuillResizeModule);
 		MatInputModule,
 		FormsModule,
 		CommonModule,
-		QuillModule.forRoot({
-			modules: {
-				resize: {
-					locale: {},
-				},
-			},
-		}),
+		QuillModule.forRoot(),
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
