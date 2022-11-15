@@ -50,7 +50,7 @@ import { QuillModule } from 'ngx-quill';
 		CreatePostDialogComponent,
 	],
 	imports: [
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
+		BrowserModule,
 		AppRoutingModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFirestoreModule,

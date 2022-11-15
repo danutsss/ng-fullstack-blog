@@ -14,8 +14,6 @@ import { BehaviorSubject } from 'rxjs';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-	title: string = "Blogu' lui Qirila";
-
 	static isBrowser = new BehaviorSubject<boolean>(false);
 
 	constructor(
