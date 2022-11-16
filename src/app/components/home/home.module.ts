@@ -33,12 +33,12 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 const routes: Routes = [
 	{
-		path: 'blog',
+		path: '',
 		// pathMatch: 'full',
 		component: PostListComponent,
 	},
 	{
-		path: 'blog/:id/:slug',
+		path: ':id/:slug',
 		component: PostDetailComponent,
 	},
 ];

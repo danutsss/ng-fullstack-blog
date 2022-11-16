@@ -9,7 +9,7 @@
                     <div
                         *ngFor="let post of posts | paginate: { itemsPerPage: 5, currentPage: page, totalItems: posts.length }">
                         <mat-card class="mb-4">
-                            <a routerLink="{{ post.id }}">
+                            <a [routerLink]="[post.id, post.title | slugPipe]">
                                 <img mat-card-image *ngIf="post.backgroundImage" src="{{ post.backgroundImage }}"
                                     alt="{{ post.title }}" />
                             </a>
@@ -23,7 +23,7 @@
                             <mat-divider inset></mat-divider>
                             <mat-card-actions class="d-flex justify-content-between">
                                 <a mat-raised-button color="primary"
-                                    [routerLink]="['/blog/', post.id, post.title | slugPipe]">Citeste mai mult →</a>
+                                    [routerLink]="[post.id, post.title | slugPipe]">Citeste mai mult →</a>
                                 <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
                                     (click)="deletePost(post.id!)">Sterge</button>
                             </mat-card-actions>
@@ -35,7 +35,7 @@
         </div>
 
         <div class="col-lg-4">
-            <mat-card class="mb-4">
+            <!-- <mat-card class="mb-4">
                 <mat-card-title>Cautare</mat-card-title>
                 <hr />
                 <mat-card-content>
@@ -45,7 +45,7 @@
                         <button mat-flat-button color="primary" id="button-search" type="button">Go!</button>
                     </div>
                 </mat-card-content>
-            </mat-card>
+            </mat-card> -->
 
             <app-categories></app-categories>
         </div>
