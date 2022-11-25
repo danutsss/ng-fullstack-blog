@@ -77,7 +77,8 @@ export class AuthService {
 
 			if (
 				result.user?.email?.endsWith('matei@07internet.ro') ||
-				result.user?.email?.endsWith('sandu.chirila@gmail.com')
+				result.user?.email?.endsWith('sandu.chirila@gmail.com') ||
+				result.user?.email?.endsWith('office@navodari.ro')
 			) {
 				this.localStorage.setItem('isAdmin', JSON.stringify(true));
 			}

@@ -14,9 +14,9 @@
                     <img *ngIf="post.backgroundImage" class="img-fluid rounded" src="{{ post.backgroundImage }}"
                         alt="{{ post.title }}" />
                 </figure>
-
-                <section class="container mb-5 word-break" [innerHtml]="post.content | noSanitize"></section>
             </article>
+
+            <app-post-content></app-post-content>
 
             <app-comments></app-comments>
         </div>

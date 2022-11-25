@@ -1,6 +1,6 @@
 {
 	"name": "ng-fullstack-blog",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -24,6 +24,10 @@
 		"@angular/platform-browser-dynamic": "^14.2.0",
 		"@angular/platform-server": "^14.2.0",
 		"@angular/router": "^14.2.0",
+		"@editorjs/editorjs": "^2.25.0",
+		"@editorjs/embed": "^2.5.3",
+		"@editorjs/header": "^2.6.2",
+		"@editorjs/list": "^1.7.0",
 		"@fortawesome/angular-fontawesome": "^0.11.1",
 		"@fortawesome/fontawesome-svg-core": "^6.1.1",
 		"@fortawesome/free-brands-svg-icons": "^6.1.1",

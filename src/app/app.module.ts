@@ -36,9 +36,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 // Font Awesome 6.x
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-// Import Quill Module.
-import { QuillModule } from 'ngx-quill';
-
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -66,7 +63,6 @@ import { QuillModule } from 'ngx-quill';
 		MatInputModule,
 		FormsModule,
 		CommonModule,
-		QuillModule.forRoot(),
 	],
 	providers: [AuthService],
 	bootstrap: [AppComponent],
