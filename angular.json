@@ -31,8 +31,10 @@
 						],
 						"scripts": [],
 						"allowedCommonJsDependencies": [
-							"quill",
-							"@botom/quill-resize-module"
+							"@editorjs",
+							"@editorjs/embed",
+							"@editorjs/header",
+							"@editorjs/list"
 						]
 					},
 					"configurations": {
