@@ -36,7 +36,7 @@
                 <mat-card-title>Cautare</mat-card-title>
                 <hr />
                 <mat-card-content>
-                    <div class="input-group mb-4">
+                    <div class="input-group">
                         <input class="form-control" type="text" placeholder="Introduceti termenul de cautare..."
                             aria-label="Introduceti termenul de cautare..." aria-describedby="button-search"
                             [(ngModel)]="searchQuery" name="searchQuery" />
@@ -44,16 +44,24 @@
                             (click)="searchPosts()">Go!</button>
                     </div>
 
+                    <hr *ngIf="foundPosts" />
+
                     <mat-card *ngIf="foundPosts">
+                        <mat-card-title>Rezultate cautare:</mat-card-title>
+                        <hr />
                         <mat-card-content>
                             <div class="row">
                                 <div class="search__results" *ngFor="let foundPost of foundPosts;">
-                                    <span class="font-weight-bold">{{ foundPost.title | truncatePipe:15 }}</span>
-                                    <a mat-button color="primary"
-                                        [routerLink]="[foundPost.id, foundPost.title | slugPipe]">Vezi
-                                        →</a>
+                                    <div class="search__results__item">
+                                        <span class="font-weight-bold">{{ foundPost.title | truncatePipe:15 }}</span>
+                                        <a mat-button color="primary"
+                                            [routerLink]="[foundPost.id, foundPost.title | slugPipe]">Vezi
+                                            →</a>
+                                    </div>
                                     <mat-divider></mat-divider>
                                 </div>
+
+                                <div *ngIf="foundPosts.length === 0" class="text-center">Nu exista rezultate!</div>
                             </div>
                         </mat-card-content>
                     </mat-card>
