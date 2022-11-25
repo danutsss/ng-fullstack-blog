@@ -17,9 +17,6 @@
                             <mat-card-subtitle>Postat de: {{ post.author }} &bull;
                                 {{ post.published.toDate() | date: 'mediumDate' }} at {{ post.published.toDate() | date:
                                 'shortTime' }} </mat-card-subtitle>
-                            <mat-card-content>
-                                <p class="card-text word-break" [innerHtml]="post.content | truncatePipe:85:'...'"></p>
-                            </mat-card-content>
                             <mat-divider inset></mat-divider>
                             <mat-card-actions class="d-flex justify-content-between">
                                 <a mat-raised-button color="primary"
@@ -35,17 +32,33 @@
         </div>
 
         <div class="col-lg-4">
-            <!-- <mat-card class="mb-4">
+            <mat-card class="mb-4">
                 <mat-card-title>Cautare</mat-card-title>
                 <hr />
                 <mat-card-content>
-                    <div class="input-group">
+                    <div class="input-group mb-4">
                         <input class="form-control" type="text" placeholder="Introduceti termenul de cautare..."
-                            aria-label="Introduceti termenul de cautare..." aria-describedby="button-search" />
-                        <button mat-flat-button color="primary" id="button-search" type="button">Go!</button>
+                            aria-label="Introduceti termenul de cautare..." aria-describedby="button-search"
+                            [(ngModel)]="searchQuery" name="searchQuery" />
+                        <button mat-flat-button color="primary" id="button-search" type="button"
+                            (click)="searchPosts()">Go!</button>
                     </div>
+
+                    <mat-card *ngIf="foundPosts">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="search__results" *ngFor="let foundPost of foundPosts;">
+                                    <span class="font-weight-bold">{{ foundPost.title | truncatePipe:15 }}</span>
+                                    <a mat-button color="primary"
+                                        [routerLink]="[foundPost.id, foundPost.title | slugPipe]">Vezi
+                                        →</a>
+                                    <mat-divider></mat-divider>
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
                 </mat-card-content>
-            </mat-card> -->
+            </mat-card>
 
             <app-categories></app-categories>
         </div>

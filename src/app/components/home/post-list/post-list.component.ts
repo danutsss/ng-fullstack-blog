@@ -13,7 +13,9 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 export class PostListComponent implements OnInit {
 	posts$!: Observable<Post[]>;
 	categories$: string[] = [];
+	foundPosts: any;
 	page: number = 1;
+	searchQuery: any = '';
 
 	constructor(
 		private postService: PostService,
@@ -36,5 +38,17 @@ export class PostListComponent implements OnInit {
 		this.postService.getCategories().subscribe((categories) => {
 			this.categories$ = categories;
 		});
+	}
+
+	searchPosts() {
+		if (!this.searchQuery) {
+			return (this.foundPosts = null);
+		}
+
+		return this.postService
+			.searchPosts('posts', 'title', this.searchQuery)
+			.subscribe((posts) => {
+				this.foundPosts = posts;
+			});
 	}
 }
