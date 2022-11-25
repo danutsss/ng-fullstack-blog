@@ -33,10 +33,10 @@
 
     </div>
 
-    <quill-editor [(ngModel)]="content" name="content" [style.height.px]="350"></quill-editor>
+    <div id="editorjs" class="editor__js"></div>
 
     <mat-dialog-actions align="center">
         <button mat-raised-button (click)="createPost()" color="accent"
-            [disabled]="!title || !content">{{saving}}</button>
+            [disabled]="!title || !editor">{{saving}}</button>
     </mat-dialog-actions>
 </div>

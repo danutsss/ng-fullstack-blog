@@ -12,13 +12,19 @@ import { AuthService } from '../../../shared/services/auth/auth.service';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
+import EditorJS from '@editorjs/editorjs';
+
+const Header = require('@editorjs/header');
+const List = require('@editorjs/list');
+const Embed = require('@editorjs/embed');
+
 @Component({
 	selector: 'app-create-post-dialog',
 	templateUrl: './create-post-dialog.component.html',
 	styleUrls: ['./create-post-dialog.component.scss'],
 })
 export class CreatePostDialogComponent implements OnInit {
-	content: string = '';
+	content: any;
 	image: string = '';
 	title: string = '';
 	categories: string = '';
@@ -27,6 +33,10 @@ export class CreatePostDialogComponent implements OnInit {
 
 	downloadURL!: Observable<string>;
 	uploadPercent?: Observable<number>;
+
+	editor!: EditorJS;
+	editorREADONLY!: EditorJS;
+	editorState = {};
 
 	constructor(
 		private postService: PostService,
@@ -37,9 +47,67 @@ export class CreatePostDialogComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	createPost() {
+	ngAfterViewInit() {
+		this.editor = new EditorJS({
+			holder: 'editorjs',
+			tools: {
+				header: {
+					class: Header,
+					inlineToolbar: ['link', 'bold', 'italic'],
+				},
+				list: {
+					class: List,
+					inlineToolbar: ['link', 'bold'],
+				},
+				embed: {
+					class: Embed,
+					inlineToolbar: true,
+					config: {
+						services: {
+							youtube: true,
+							coub: true,
+							facebook: true,
+							instagram: true,
+							twitter: true,
+							vimeo: true,
+							googledrive: {
+								// https://drive.google.com/file/d/1DObhdcTDHI1W0_HMcOcmkWxATxSRfsBl/view?usp=share_link
+								regex: /https:\/\/drive\.google\.com\/file\/d\/(.+)\/view\?usp=share_link/,
+								height: 400,
+								width: 600,
+								embedUrl:
+									'https://drive.google.com/file/d/<%= remote_id %>/preview',
+								html: '<iframe height="400" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;"></iframe>',
+								id: (groups: []) => groups.join('/embed/'),
+							},
+							googledocs: {
+								// https://docs.google.com/document/d/1oW2b2AgBenOsBsPfw1CL0fIctwzdelG7656l9wcBrmw/edit?usp=share_link
+								regex: /https:\/\/docs\.google\.com\/document\/d\/(.+)\/edit\?usp=share_link/,
+								height: 400,
+								width: 600,
+								embedUrl:
+									'https://docs.google.com/document/d/<%= remote_id %>/preview',
+								html: '<iframe height="400" scrolling="no" frameborder="no" allowtransparency="true" allowfullscreen="true" style="width: 100%;"></iframe>',
+								id: (groups: []) => groups.join('/embed/'),
+							},
+						},
+					},
+				},
+			},
+		});
+	}
+
+	async createPost() {
 		const categories = this.categories.split(',');
+
+		await this.editor.save().then(async (outputData) => {
+			this.content = outputData;
+			outputData;
+		});
+
+		const id = this.afStore.createId();
 		const postData = {
+			id: id,
 			content: this.content,
 			backgroundImage: this.image || '',
 			title: this.title,
@@ -48,7 +116,9 @@ export class CreatePostDialogComponent implements OnInit {
 			published: new Date(),
 			categories: categories,
 		};
-		this.postService.createPost(postData);
+
+		this.postService.createPost(id, postData);
+
 		this.title = '';
 		this.content = '';
 		this.image = '';
