@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 // Import Angular Firestore.
 import {
 	AngularFirestore,
@@ -42,6 +41,25 @@ export class PostService {
 	}
 
 	/**
+	 * Search through all posts by search query
+	 * @param collection - Collection name.
+	 * @param getParam - Search parameter (title, content, etc.).
+	 * @param searchParam - Search query.
+	 * @returns - search results.
+	 */
+
+	searchPosts(collection: string, getParam: string, searchParam: string) {
+		return this.afs
+			.collection(collection, (ref) =>
+				ref
+					.where(getParam, '>=', searchParam)
+					.where(getParam, '<=', `${searchParam}\uf8ff`)
+					.limit(5)
+			)
+			.valueChanges();
+	}
+
+	/**
 	 * Get post data by id.
 	 * @param id - Post ID.
 	 */
@@ -79,8 +97,8 @@ export class PostService {
 	 * Create new post.
 	 * @param data - Post data.
 	 */
-	createPost(data: Post) {
-		return this.postsCollection.add(data);
+	createPost(id: string, data: Post) {
+		return this.afs.doc(`posts/${id}`).set(data);
 	}
 
 	/**
