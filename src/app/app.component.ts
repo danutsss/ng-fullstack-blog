@@ -1,5 +1,4 @@
 import { Component, Inject, PLATFORM_ID } from '@angular/core';
-import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 
 // Inject Auth service.
@@ -18,7 +17,6 @@ export class AppComponent {
 
 	constructor(
 		public authService: AuthService,
-		private router: Router,
 		@Inject(PLATFORM_ID) private platformId: any
 	) {
 		AppComponent.isBrowser.next(isPlatformBrowser(platformId));
