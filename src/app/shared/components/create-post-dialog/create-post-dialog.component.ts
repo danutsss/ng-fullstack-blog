@@ -17,6 +17,10 @@ import EditorJS from '@editorjs/editorjs';
 const Header = require('@editorjs/header');
 const List = require('@editorjs/list');
 const Embed = require('@editorjs/embed');
+const Delimiter = require('@editorjs/delimiter');
+const Paragraph = require('@editorjs/paragraph');
+const alignmentTuneTool = require('editorjs-text-alignment-blocktune');
+const Underline = require('@editorjs/underline');
 
 @Component({
 	selector: 'app-create-post-dialog',
@@ -53,11 +57,26 @@ export class CreatePostDialogComponent implements OnInit {
 			tools: {
 				header: {
 					class: Header,
-					inlineToolbar: ['link', 'bold', 'italic'],
+					config: {
+						levels: [1, 2, 3, 4, 5, 6],
+						defaultLevel: 3,
+						defaultAlignment: 'left',
+					},
+					inlineToolbar: true,
+					tunes: ['alignmentTune'],
+				},
+				paragraph: {
+					class: Paragraph,
+					inlineToolbar: true,
+					tunes: ['alignmentTune'],
 				},
 				list: {
 					class: List,
-					inlineToolbar: ['link', 'bold'],
+					inlineToolbar: true,
+					tunes: ['alignmentTune'],
+				},
+				delimiter: {
+					class: Delimiter,
 				},
 				embed: {
 					class: Embed,
@@ -93,6 +112,10 @@ export class CreatePostDialogComponent implements OnInit {
 						},
 					},
 				},
+				alignmentTune: {
+					class: alignmentTuneTool,
+				},
+				underline: Underline,
 			},
 		});
 	}
