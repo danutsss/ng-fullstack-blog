@@ -19,7 +19,8 @@
 		"firebase-auth",
 		"angular",
 		"firebase-database",
-		"firebase-storage"
+		"firebase-storage",
+		"editorjs"
 	],
 	"author": "Matei Nicolae - Daniel",
 	"license": "ISC",
