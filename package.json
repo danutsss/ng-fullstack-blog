@@ -1,6 +1,7 @@
 {
 	"name": "ng-fullstack-blog",
-	"version": "0.1.0",
+	"version": "1.0.0",
+	"description": "A fullstack blog web application with Angular 14 and Firebase.",
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
@@ -9,6 +10,22 @@
 		"test": "ng test"
 	},
 	"private": true,
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/danutsss/ng-fullstack-blog.git"
+	},
+	"keywords": [
+		"firebase",
+		"firebase-auth",
+		"angular",
+		"firebase-database",
+		"firebase-storage"
+	],
+	"author": "Matei Nicolae - Daniel",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/danutsss/ng-fullstack-blog/issues"
+	},
 	"dependencies": {
 		"@angular/animations": "^14.2.0",
 		"@angular/cdk": "^14.2.2",
