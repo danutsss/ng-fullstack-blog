@@ -1,8 +1,13 @@
-::ng-deep .codex-editor__redactor {
+#editorjsReadonly ::ng-deep .codex-editor__redactor {
 	padding-bottom: 5px !important;
 }
 
-::ng-deep .ce-block__content {
+#editorjsReadonly ::ng-deep .ce-block__content {
 	display: flex;
 	justify-content: center;
+}
+
+.editor__js {
+	border: 1px solid #ccc;
+	background-color: #0000000a;
 }

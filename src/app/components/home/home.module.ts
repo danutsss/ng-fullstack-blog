@@ -10,6 +10,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 
@@ -69,6 +70,7 @@ const routes: Routes = [
 		RouterModule.forChild(routes),
 		MatDividerModule,
 		NgxPaginationModule,
+		MatInputModule,
 	],
 	providers: [PostService],
 })

@@ -1,1 +1,15 @@
-<div id="editorjs"></div>
+<div [hidden]="editing" id="editorjsReadonly" (click)="editing = !editing; displayEditor();"></div>
+<div [hidden]="!editing">
+    <mat-card class="mb-4" align="center">
+        <h3 class="fw-bolder mb-1">Modifica postare:</h3>
+
+        <mat-form-field appearance="outline" class="title_field">
+            <mat-label>titlu nou postare</mat-label>
+            <input matInput placeholder="titlu nou" [(ngModel)]="title" name="title" />
+        </mat-form-field>
+
+        <div id="editorjs" class="editor__js"></div>
+        <hr inset />
+        <button mat-raised-button (click)="updatePost()" color="primary">Salveaza</button>
+    </mat-card>
+</div>
