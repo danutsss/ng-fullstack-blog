@@ -146,6 +146,7 @@ export class CreatePostDialogComponent implements OnInit {
 		this.content = '';
 		this.image = '';
 		this.categories = '';
+		this.editor.destroy();
 
 		this.saving = 'Postarea a fost salvata.';
 		setTimeout(() => (this.saving = 'Creeaza postare'), 3000);
