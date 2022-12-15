@@ -1,4 +1,4 @@
-<div [hidden]="editing" id="editorjsReadonly" (click)="editing = !editing; displayEditor();"></div>
+<div [hidden]="editing" id="editorjsReadonly"></div>
 <div [hidden]="!editing">
     <mat-card class="mb-4" align="center">
         <h3 class="fw-bolder mb-1">Modifica postare:</h3>
@@ -12,4 +12,10 @@
         <hr inset />
         <button mat-raised-button (click)="updatePost()" color="primary">Salveaza</button>
     </mat-card>
+</div>
+
+<div *ngIf="authService.isAdmin" class="mb-3" align="right">
+    <hr inset />
+    <button mat-button (click)="editing = !editing; displayEditor();" color="primary">{{ !editing ? "Modifica postare" :
+        "Anuleaza" }}</button>
 </div>

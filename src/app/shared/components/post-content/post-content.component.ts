@@ -31,7 +31,7 @@ export class PostContentComponent implements OnInit {
 	constructor(
 		private postService: PostService,
 		private route: ActivatedRoute,
-		private authService: AuthService
+		public authService: AuthService
 	) {}
 
 	ngOnInit(): void {
