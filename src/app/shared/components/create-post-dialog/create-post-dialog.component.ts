@@ -123,10 +123,15 @@ export class CreatePostDialogComponent implements OnInit {
 	async createPost() {
 		const categories = this.categories.split(',');
 
-		await this.editor.save().then(async (outputData) => {
-			this.content = outputData;
-			outputData;
-		});
+		await this.editor
+			.save()
+			.then(async (outputData) => {
+				this.content = outputData;
+				outputData;
+			})
+			.catch((error) => {
+				throw new Error(error);
+			});
 
 		const id = this.afStore.createId();
 		const postData = {
@@ -146,7 +151,7 @@ export class CreatePostDialogComponent implements OnInit {
 		this.content = '';
 		this.image = '';
 		this.categories = '';
-		this.editor.destroy();
+		this.editor.clear();
 
 		this.saving = 'Postarea a fost salvata.';
 		setTimeout(() => (this.saving = 'Creeaza postare'), 3000);
