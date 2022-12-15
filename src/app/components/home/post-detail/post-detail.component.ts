@@ -12,6 +12,7 @@ import { Post } from 'src/app/shared/services/models/post';
 })
 export class PostDetailComponent implements OnInit {
 	post!: Post;
+	id = this.route.snapshot.paramMap.get('id') as string;
 	constructor(
 		private postService: PostService,
 		private route: ActivatedRoute
@@ -22,8 +23,7 @@ export class PostDetailComponent implements OnInit {
 	}
 
 	getPost() {
-		const id = this.route.snapshot.paramMap.get('id') as string;
-		this.postService.getPostData(id).subscribe((post) => {
+		this.postService.getPostData(this.id).subscribe((post) => {
 			this.post = post as Post;
 		});
 	}

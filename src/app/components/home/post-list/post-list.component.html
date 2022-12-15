@@ -21,7 +21,7 @@
                             <mat-card-actions class="d-flex justify-content-between">
                                 <a mat-raised-button color="primary"
                                     [routerLink]="[post.id, post.title | slugPipe]">Citeste mai mult →</a>
-                                <button mat-button color="accent" *ngIf="authService.isLoggedIn && authService.isAdmin"
+                                <button mat-button color="warn" *ngIf="authService.isLoggedIn && authService.isAdmin"
                                     (click)="deletePost(post.id!)">Sterge</button>
                             </mat-card-actions>
                         </mat-card>

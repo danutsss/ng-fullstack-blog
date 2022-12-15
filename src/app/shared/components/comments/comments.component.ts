@@ -22,6 +22,7 @@ import { LocalstorageService } from '../../services/localstorage/localstorage.se
 export class CommentsComponent implements OnInit {
 	comment: string = '';
 	comments$!: Observable<Comment[]>;
+	postId = this.route.snapshot.paramMap.get('id') as string;
 
 	constructor(
 		private commentService: CommentsService,
@@ -35,13 +36,12 @@ export class CommentsComponent implements OnInit {
 	}
 
 	addComment() {
-		const postId = this.route.snapshot.paramMap.get('id') as string;
 		const userName = JSON.parse(
 			this.localStorageService.getItem('loggedUser')!
 		) as any;
 		const commentData = {
 			content: this.comment,
-			postId: postId,
+			postId: this.postId,
 			createdAt: new Date(),
 			userName: userName['displayName'],
 			authorId: userName['uid'],
@@ -51,8 +51,7 @@ export class CommentsComponent implements OnInit {
 	}
 
 	getComments() {
-		const postId = this.route.snapshot.paramMap.get('id') as string;
-		return this.commentService.getPostComments(postId);
+		return this.commentService.getPostComments(this.postId);
 	}
 
 	deleteComment(commentId: string) {
