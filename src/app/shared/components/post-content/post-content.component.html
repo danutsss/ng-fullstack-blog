@@ -14,8 +14,12 @@
     </mat-card>
 </div>
 
-<div *ngIf="authService.isAdmin" class="mb-3" align="right">
+<div *ngIf="authService.isLoggedIn && authService.isAdmin" class="mb-3" align="right">
     <hr inset />
-    <button mat-button (click)="editing = !editing; displayEditor();" color="primary">{{ !editing ? "Modifica postare" :
+    <button mat-button (click)="editing = !editing; displayEditor();" [style.margin-right.rem]="1" color="primary">{{
+        !editing ?
+        "Modifica postare" :
         "Anuleaza" }}</button>
+    <button mat-raised-button color="warn" class="ml-1" *ngIf="authService.isLoggedIn && authService.isAdmin"
+        (click)="deletePost(id)">Sterge</button>
 </div>

@@ -28,6 +28,7 @@ export class PostContentComponent implements OnInit {
 	editing: boolean = false;
 	title: string = '';
 	content: any;
+	id = this.route.snapshot.paramMap.get('id') as string;
 	constructor(
 		private postService: PostService,
 		private route: ActivatedRoute,
@@ -82,8 +83,7 @@ export class PostContentComponent implements OnInit {
 	}
 
 	getPost() {
-		const id = this.route.snapshot.paramMap.get('id') as string;
-		this.postService.getPostData(id).subscribe((post) => {
+		this.postService.getPostData(this.id).subscribe((post) => {
 			this.post = post as Post;
 			this.editorREADONLY.isReady
 				.then(() => {
@@ -93,6 +93,17 @@ export class PostContentComponent implements OnInit {
 					throw new Error(error);
 				});
 		});
+	}
+
+	deletePost(id: string) {
+		this.postService
+			.deletePost(id)
+			.then(() => {
+				window.location.href = '/';
+			})
+			.catch((error) => {
+				throw new Error(error);
+			});
 	}
 
 	displayEditor() {
@@ -163,11 +174,10 @@ export class PostContentComponent implements OnInit {
 			},
 		});
 
-		const id = this.route.snapshot.paramMap.get('id') as string;
-		this.postService.getPostData(id).subscribe((post) => {
+		this.postService.getPostData(this.id).subscribe((post) => {
 			this.post = post as Post;
 			this.editor.isReady
-				.then(() => {
+				?.then(() => {
 					this.editor.render(this.post.content);
 				})
 				.catch((error) => {
@@ -177,11 +187,15 @@ export class PostContentComponent implements OnInit {
 	}
 
 	async updatePost() {
-		const id = this.route.snapshot.paramMap.get('id') as string;
-		await this.editor.save().then(async (outputData) => {
-			this.content = outputData;
-			outputData;
-		});
+		await this.editor
+			.save()
+			.then(async (outputData) => {
+				this.content = outputData;
+				outputData;
+			})
+			.catch((error) => {
+				throw new Error(error);
+			});
 		const postData = {
 			title: this.title,
 			content: this.content,
@@ -192,7 +206,7 @@ export class PostContentComponent implements OnInit {
 			categories: this.post.categories,
 		};
 
-		this.postService.updatePost(id, postData);
+		this.postService.updatePost(this.id, postData);
 
 		this.editing = false;
 		this.editor.destroy();
